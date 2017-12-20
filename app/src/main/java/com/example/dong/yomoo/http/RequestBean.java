@@ -25,7 +25,7 @@ public class RequestBean {
         this.tag = tag;
     }
 
-    public Map<String, Object> getParams() {
+    public Map<?, ?> getParams() {
         return params;
     }
 

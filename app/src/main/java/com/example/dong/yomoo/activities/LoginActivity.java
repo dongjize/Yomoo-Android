@@ -3,7 +3,9 @@ package com.example.dong.yomoo.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
@@ -14,8 +16,9 @@ import com.example.dong.yomoo.R;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView registerTv;
+    private EditText etPhone, etPassword;
     private Button loginBtn;
+    private TextView tvRegisterNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +26,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.login_activity);
 
         loginBtn = findViewById(R.id.btn_login);
-        registerTv = findViewById(R.id.tv_register_now);
+        etPhone = findViewById(R.id.et_phone);
+        etPassword = findViewById(R.id.et_password);
+        tvRegisterNow = findViewById(R.id.tv_register_now);
 
         loginBtn.setOnClickListener(this);
-        registerTv.setOnClickListener(this);
-
+        tvRegisterNow.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +44,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.tv_register_now:
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                // TODO bundle
                 startActivity(intent);
                 break;
             case R.id.btn_login:

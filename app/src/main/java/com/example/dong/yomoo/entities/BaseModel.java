@@ -1,7 +1,5 @@
 package com.example.dong.yomoo.entities;
 
-import android.support.annotation.NonNull;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -10,7 +8,7 @@ import java.io.Serializable;
  * Created by dong on 16/12/2017.
  */
 
-public class BaseModel implements Comparable<BaseModel>, Serializable {
+public class BaseModel implements Serializable {
     protected Long id;
     @SerializedName("created_at")
     protected String createdAt;
@@ -41,8 +39,4 @@ public class BaseModel implements Comparable<BaseModel>, Serializable {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public int compareTo(@NonNull BaseModel baseModel) {
-        return 0;
-    }
 }

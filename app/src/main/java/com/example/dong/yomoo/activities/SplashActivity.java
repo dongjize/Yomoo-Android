@@ -34,10 +34,10 @@ public class SplashActivity extends AppCompatActivity {
                 case VENDOR:
                     intent.setClass(SplashActivity.this, VendorMainActivity.class);
                     break;
-                case MEAT_PROCESSOR:
+                case BUTCHER:
                     intent.setClass(SplashActivity.this, FarmerInfoListActivity.class);
                     break;
-                case POOR_SUPPORTER:
+                case SUPPORTER:
                     intent.setClass(SplashActivity.this, FarmerInfoListActivity.class);
                     break;
             }
