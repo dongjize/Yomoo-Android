@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="user_types">
+        <item>养殖户</item>
+        <item>饲料销售商</item>
+        <item>肉类加工商</item>
+        <item>扶贫工作者</item>
+    </string-array>
+</resources>

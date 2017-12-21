@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.dong.yomoo.application.MyApplication;
+import com.example.dong.yomoo.http.handlers.BaseHttpHandler;
+import com.example.dong.yomoo.http.handlers.HttpHandler;
 
 /**
  * Created by dong on 16/12/2017.
@@ -18,12 +20,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
 
+    protected HttpHandler httpHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         context = this;
-
+        httpHandler = new HttpHandler(context);
     }
 
     protected abstract void initToolbar();

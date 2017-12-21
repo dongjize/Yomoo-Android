@@ -8,6 +8,7 @@ import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
+import com.example.dong.yomoo.http.VolleyUtils;
 import com.example.dong.yomoo.http.handlers.BaseHttpHandler;
 
 import org.json.JSONException;
@@ -17,9 +18,9 @@ import org.json.JSONObject;
  * Created by dong on 20/12/2017.
  */
 
-public class UserHttpHandler extends BaseHttpHandler {
+public class HttpHandler extends BaseHttpHandler {
 
-    public UserHttpHandler(Context context) {
+    public HttpHandler(Context context) {
         super(context);
     }
 
@@ -35,12 +36,12 @@ public class UserHttpHandler extends BaseHttpHandler {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.getInt("result_code") == HttpAPI.RESULT_OK) {
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
                         BaseResult result = new BaseResult();
                         result.setValue("");
                         result.setData(null);
                         result.setMessage(jsonObject.getString("message"));
-                        result.setResultCode(jsonObject.getInt("result_code"));
+                        result.setResultCode(jsonObject.getInt("code"));
                         callback.onSuccess(result);
                     } else {
                         callback.onFailure(jsonObject.getString("message"));

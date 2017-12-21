@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.users;
+package com.example.dong.yomoo.entities.users;
 
 /**
  * Created by dong on 16/12/2017.
@@ -12,7 +12,7 @@ public class Farmer extends User {
     private String expLivestock;
 
     public Farmer() {
-        this.type = UserType.FARMER;
+        this.type = User.FARMER;
     }
 
     public String getVillage() {

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 
+import com.example.dong.yomoo.http.RequestUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +27,15 @@ public class MyApplication extends Application {
         return app;
     }
 
-    private MyApplication() {
-    }
+//    private MyApplication() {
+//    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
         activityList = new ArrayList<>();
+        RequestUtils.initRequest(getApplicationContext());
 
     }
 

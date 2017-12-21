@@ -7,4 +7,10 @@ package com.example.dong.yomoo.http;
 public class HttpAPI {
     public static final int TIME_OUT = 20 * 1000;
     public static final int RESULT_OK = 200;
+
+
+    public static final String SCHEMA = "http://";
+    public static final String DOMAIN = SCHEMA + "10.0.2.2:8080/";
+
+    public static final String REGISTER = DOMAIN + "register/";
 }

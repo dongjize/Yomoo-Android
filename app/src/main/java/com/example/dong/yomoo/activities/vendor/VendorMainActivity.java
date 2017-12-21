@@ -5,7 +5,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.activities.OrderListActivity;
 import com.example.dong.yomoo.R;
 
 import java.util.ArrayList;

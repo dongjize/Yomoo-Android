@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.farmer.FarmerMainActivity;
-import com.example.dong.yomoo.users.User;
+import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.utils.Global;
 import com.example.dong.yomoo.activities.vendor.VendorMainActivity;
 
@@ -26,18 +26,18 @@ public class SplashActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
         if (Global.isLogin) {
-            User.UserType userType = Global.user.getType();
+            String userType = Global.user.getType();
             switch (userType) {
-                case FARMER:
+                case User.FARMER:
                     intent.setClass(SplashActivity.this, FarmerMainActivity.class);
                     break;
-                case VENDOR:
+                case User.VENDOR:
                     intent.setClass(SplashActivity.this, VendorMainActivity.class);
                     break;
-                case BUTCHER:
+                case User.BUTCHER:
                     intent.setClass(SplashActivity.this, FarmerInfoListActivity.class);
                     break;
-                case SUPPORTER:
+                case User.SUPPORTER:
                     intent.setClass(SplashActivity.this, FarmerInfoListActivity.class);
                     break;
             }

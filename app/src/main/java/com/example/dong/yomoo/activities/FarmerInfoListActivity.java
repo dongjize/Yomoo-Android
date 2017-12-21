@@ -3,7 +3,7 @@ package com.example.dong.yomoo.activities;
 import android.os.Bundle;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.users.Farmer;
+import com.example.dong.yomoo.entities.users.Farmer;
 
 import java.util.List;
 

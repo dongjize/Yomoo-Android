@@ -1,9 +1,7 @@
 package com.example.dong.yomoo.entities;
 
-import com.example.dong.yomoo.users.Farmer;
-import com.example.dong.yomoo.users.User;
-
-import java.util.Date;
+import com.example.dong.yomoo.entities.users.Farmer;
+import com.example.dong.yomoo.entities.users.User;
 
 /**
  * Created by dong on 16/12/2017.

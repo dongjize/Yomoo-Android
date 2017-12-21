@@ -1,6 +1,6 @@
 package com.example.dong.yomoo.utils;
 
-import com.example.dong.yomoo.users.User;
+import com.example.dong.yomoo.entities.users.User;
 
 /**
  * Created by dong on 16/12/2017.

@@ -66,7 +66,7 @@ public class VolleyUtils {
                 }
             }
         };
-        L.i("UserHttpHandler", url);
+        L.i("HttpHandler", url);
         request.setRetryPolicy(new DefaultRetryPolicy(HttpAPI.TIME_OUT, 1, 1.0f));
         requestUtils.addToRequestQueue(request, requestBean.getTag());
     }
@@ -112,8 +112,8 @@ public class VolleyUtils {
                 }
             }
         };
-        L.i("UserHttpHandler", requestBean.getUrl());
-        L.i("UserHttpHandler", requestBean.getParams() == null ? "" : requestBean.getParams().toString());
+        L.i("HttpHandler", requestBean.getUrl());
+        L.i("HttpHandler", requestBean.getParams() == null ? "" : requestBean.getParams().toString());
         request.setRetryPolicy(new DefaultRetryPolicy(HttpAPI.TIME_OUT, 1, 1.0f));
         requestUtils.addToRequestQueue(request, requestBean.getTag());
     }
