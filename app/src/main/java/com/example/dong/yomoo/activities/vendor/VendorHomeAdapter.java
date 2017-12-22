@@ -15,25 +15,25 @@ import java.util.List;
  * Created by dong on 17/12/2017.
  */
 
-public class VendorMainAdapter extends RecyclerView.Adapter<VendorMainAdapter.VendorMainViewHolder> {
+public class VendorHomeAdapter extends RecyclerView.Adapter<VendorHomeAdapter.VendorHomeViewHolder> {
 
     private Context context;
-    private List<VendorMainModel> modelList;
+    private List<VendorHomeModel> modelList;
 
-    public VendorMainAdapter(Context context, List<VendorMainModel> modelList) {
+    public VendorHomeAdapter(Context context, List<VendorHomeModel> modelList) {
         this.context = context;
         this.modelList = modelList;
     }
 
     @Override
-    public VendorMainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.vendor_main_activity_item, null);
-        return new VendorMainViewHolder(view);
+    public VendorHomeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = View.inflate(context, R.layout.vendor_home_activity_item, null);
+        return new VendorHomeViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(VendorMainViewHolder holder, int position) {
-        final VendorMainModel model = modelList.get(position);
+    public void onBindViewHolder(VendorHomeViewHolder holder, int position) {
+        final VendorHomeModel model = modelList.get(position);
         holder.tvTitle.setText(model.getTitle());
         holder.tvSubTitle.setText(model.getSubtitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +53,13 @@ public class VendorMainAdapter extends RecyclerView.Adapter<VendorMainAdapter.Ve
         return 0;
     }
 
-    class VendorMainViewHolder extends RecyclerView.ViewHolder {
+    class VendorHomeViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvSubTitle;
 
-        public VendorMainViewHolder(View itemView) {
+        public VendorHomeViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
-            tvSubTitle = (TextView) itemView.findViewById(R.id.tv_subtitle);
+            tvTitle = itemView.findViewById(R.id.tv_title);
+            tvSubTitle = itemView.findViewById(R.id.tv_subtitle);
         }
     }
 }

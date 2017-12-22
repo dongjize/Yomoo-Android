@@ -16,7 +16,6 @@ import java.util.List;
 public class MyApplication extends Application {
     private static MyApplication app = null;
     private List<Activity> activityList;
-    protected ProgressDialog progressDialog;
 
     public static MyApplication getInstance() {
         if (null == app) {
@@ -26,9 +25,6 @@ public class MyApplication extends Application {
         }
         return app;
     }
-
-//    private MyApplication() {
-//    }
 
     @Override
     public void onCreate() {
@@ -57,14 +53,6 @@ public class MyApplication extends Application {
 
     public void exitApplication() {
         finishAllActivities();
-    }
-
-    protected void setProgressDialog() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage("正在加载...");
-        progressDialog.setIndeterminate(false);
-        progressDialog.setCancelable(false);
     }
 
 }

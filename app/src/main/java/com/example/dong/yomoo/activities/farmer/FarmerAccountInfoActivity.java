@@ -2,18 +2,19 @@ package com.example.dong.yomoo.activities.farmer;
 
 import android.os.Bundle;
 
+import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
 
 /**
- * Created by dong on 17/12/2017.
+ * Created by dong on 22/12/2017.
  */
 
-public class FarmerMainActivity extends BaseActivity {
+public class FarmerAccountInfoActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.farmer_account_info_activity);
     }
 
     @Override

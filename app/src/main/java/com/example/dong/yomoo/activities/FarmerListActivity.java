@@ -13,7 +13,7 @@ import java.util.List;
  * Created by dong on 17/12/2017.
  */
 
-public class FarmerInfoListActivity extends BaseActivity {
+public class FarmerListActivity extends BaseActivity {
 
     private List<Farmer> farmerList;
 

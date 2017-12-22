@@ -6,7 +6,7 @@ import com.example.dong.yomoo.activities.BaseActivity;
  * Created by dong on 17/12/2017.
  */
 
-public class PurchaseListActivity extends BaseActivity {
+public class FodderPurchaseListActivity extends BaseActivity {
     @Override
     protected void initToolbar() {
 

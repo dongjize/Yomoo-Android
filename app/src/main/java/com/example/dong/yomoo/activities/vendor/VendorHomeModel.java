@@ -4,12 +4,12 @@ package com.example.dong.yomoo.activities.vendor;
  * Created by dong on 17/12/2017.
  */
 
-public class VendorMainModel {
+public class VendorHomeModel {
     private String title;
     private String subtitle;
     private Class<?> cls;
 
-    public VendorMainModel(String title, String subtitle, Class<?> cls) {
+    public VendorHomeModel(String title, String subtitle, Class<?> cls) {
         this.title = title;
         this.subtitle = subtitle;
         this.cls = cls;

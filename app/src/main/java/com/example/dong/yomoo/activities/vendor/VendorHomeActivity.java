@@ -15,29 +15,29 @@ import java.util.List;
  * Created by dong on 17/12/2017.
  */
 
-public class VendorMainActivity extends BaseActivity {
-    private static final String TAG = VendorMainActivity.class.getSimpleName();
+public class VendorHomeActivity extends BaseActivity {
+    private static final String TAG = VendorHomeActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
-    private List<VendorMainModel> modelList;
-    private VendorMainAdapter adapter;
+    private List<VendorHomeModel> modelList;
+    private VendorHomeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vendor_main_activity);
+        setContentView(R.layout.vendor_home_activity);
 
         recyclerView = findViewById(R.id.recycler_view);
 
         modelList = new ArrayList<>();
-        VendorMainModel[] models = {
-                new VendorMainModel("我的订单", "", OrderListActivity.class),
-                new VendorMainModel("我的库存", "", FodderStockListActivity.class),
-                new VendorMainModel("添加进货信息", "", PurchaseListActivity.class)
+        VendorHomeModel[] models = {
+                new VendorHomeModel("我的订单", "", HistoryOrderListActivity.class),
+                new VendorHomeModel("我的库存", "", FodderStockListActivity.class),
+                new VendorHomeModel("添加进货信息", "", FodderPurchaseListActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 
-        adapter = new VendorMainAdapter(VendorMainActivity.this, modelList);
+        adapter = new VendorHomeAdapter(VendorHomeActivity.this, modelList);
         RecyclerView.LayoutManager lm = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);

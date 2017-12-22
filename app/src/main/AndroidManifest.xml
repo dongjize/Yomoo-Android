@@ -54,6 +54,30 @@
         <activity
             android:name=".activities.LoginActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.FarmerHomeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.VendorHomeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.butcher.ButcherHomeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.supporter.SupporterHomeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.FarmerAccountInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.FarmerInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.butcher.LivestockDemandPublishActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.BreedingInfoListActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

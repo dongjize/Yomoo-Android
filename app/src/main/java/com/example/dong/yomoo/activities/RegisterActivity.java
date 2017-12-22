@@ -1,6 +1,7 @@
 package com.example.dong.yomoo.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -36,6 +37,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.register_activity);
 
         userType = User.FARMER;
+        initToolbar();
 
         registerBtn = findViewById(R.id.btn_register);
         etPhone = findViewById(R.id.et_phone);
@@ -56,14 +58,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
 
     @Override
     protected void initToolbar() {
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

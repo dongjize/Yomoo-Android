@@ -1,5 +1,6 @@
 package com.example.dong.yomoo.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar toolbar;
 
     protected HttpHandler httpHandler;
+
+    protected ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void showToast(String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void setProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("正在加载...");
+        progressDialog.setIndeterminate(false);
+        progressDialog.setCancelable(false);
     }
 
 }

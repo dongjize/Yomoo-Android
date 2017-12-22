@@ -13,4 +13,5 @@ public class HttpAPI {
     public static final String DOMAIN = SCHEMA + "10.0.2.2:8080/";
 
     public static final String REGISTER = DOMAIN + "register/";
+    public static final String LOGIN = DOMAIN + "login/";
 }
