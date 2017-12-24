@@ -44,9 +44,45 @@ public class HttpHandler extends BaseHttpHandler {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        User user = gson.fromJson(data.getJSONObject("user").toString(), new TypeToken<User>() {
+                        }.getType());
                         BaseResult result = new BaseResult();
                         result.setValue("");
-                        result.setData(null);
+                        result.setData(user);
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void userCompleteInfo(RequestBean requestBean, final HttpCallback callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        User user = gson.fromJson(data.getJSONObject("user").toString(), new TypeToken<User>() {
+                        }.getType());
+                        BaseResult result = new BaseResult();
+                        result.setValue("");
+                        result.setData(user);
                         result.setMessage(jsonObject.getString("message"));
                         result.setResultCode(jsonObject.getInt("code"));
                         callback.onSuccess(result);
@@ -99,6 +135,20 @@ public class HttpHandler extends BaseHttpHandler {
             @Override
             public void onErrorResponse(VolleyError error) {
                 callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void getFarmerInfo(RequestBean requestBean, final HttpCallback callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
         });
     }

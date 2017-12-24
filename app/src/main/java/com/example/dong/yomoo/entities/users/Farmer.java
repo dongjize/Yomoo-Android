@@ -5,6 +5,8 @@ package com.example.dong.yomoo.entities.users;
  */
 
 public class Farmer extends User {
+    private long farmerId; // PK
+
     private String village;
     private String group;
     private String streetNum;
@@ -12,7 +14,22 @@ public class Farmer extends User {
     private String expLivestock;
 
     public Farmer() {
-        this.type = User.FARMER;
+        setType(FARMER);
+    }
+
+    public Farmer(User user) {
+        setId(user.getId());
+        setPhone(user.getPhone());
+        setPassword(user.getPassword());
+        setSalt(user.getSalt());
+    }
+
+    public long getFarmerId() {
+        return farmerId;
+    }
+
+    public void setFarmerId(long farmerId) {
+        this.farmerId = farmerId;
     }
 
     public String getVillage() {

@@ -56,6 +56,9 @@
             android:name=".activities.RegisterActivity"
             android:launchMode="singleTask" />
         <activity
+            android:name=".activities.CompleteInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".activities.LoginActivity"
             android:launchMode="singleTask" />
 
@@ -81,6 +84,9 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.BreedingInfoListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.VendorInfoDetailActivity"
             android:launchMode="singleTask" />
 
         <!--vendor home-->

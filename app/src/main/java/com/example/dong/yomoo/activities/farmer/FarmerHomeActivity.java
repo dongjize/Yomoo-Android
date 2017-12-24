@@ -1,6 +1,8 @@
 package com.example.dong.yomoo.activities.farmer;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,6 +12,7 @@ import com.example.dong.yomoo.activities.BaseActivity;
 import com.example.dong.yomoo.activities.farmer.profile.FarmerProfileFragment;
 import com.example.dong.yomoo.activities.farmer.services.FarmerServiceFragment;
 import com.example.dong.yomoo.application.MyApplication;
+import com.example.dong.yomoo.utils.Global;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +31,11 @@ public class FarmerHomeActivity extends BaseActivity {
     private Fragment profileFragment, servicesFragment;
     private FarmerHomeTabAdapter mAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_home_activity);
-        application = MyApplication.getInstance(); // TODO 用来退出app
+        application = MyApplication.getInstance();
 
         initToolbar();
 
@@ -62,4 +64,23 @@ public class FarmerHomeActivity extends BaseActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (!Global.isExit) {
+            Global.isExit = true;
+            showToast("再按一次退出程序");
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Global.isExit = false;
+                }
+            }, 2000);
+        } else {
+            application.exitApplication();
+        }
+    }
+
 }

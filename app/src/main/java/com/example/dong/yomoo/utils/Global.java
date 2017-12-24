@@ -1,5 +1,6 @@
 package com.example.dong.yomoo.utils;
 
+import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 
 /**
@@ -8,6 +9,8 @@ import com.example.dong.yomoo.entities.users.User;
 
 public class Global {
     public static User user = new User();
+    public static Farmer farmer = new Farmer();
+
     public static boolean isLogin = false;
     public static boolean isExit = false;
     public static String rawCookies;

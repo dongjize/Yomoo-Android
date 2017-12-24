@@ -1,5 +1,6 @@
 package com.example.dong.yomoo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
 import com.example.dong.yomoo.utils.CommonUtils;
+import com.example.dong.yomoo.utils.Global;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -94,12 +97,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         httpHandler.userRegister(requestBean, new HttpCallback() {
             @Override
             public void onSuccess(BaseResult result) {
-                showToast("注册成功！！！");
+                showToast("注册成功！");
+                Global.user = (User) result.getData();
+                Global.isLogin = true;
+                if (userType.equals(User.FARMER)) {
+                    Global.farmer = (Farmer) result.getData();
+                }
+                Intent intent = new Intent(context, CompleteInfoActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onFailure(String errMsg) {
-                showToast("注册失败！！！");
+                showToast(errMsg);
             }
         });
     }

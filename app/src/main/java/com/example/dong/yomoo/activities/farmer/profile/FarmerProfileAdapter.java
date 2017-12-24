@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.farmer.CommonItemViewHolder;
+import com.example.dong.yomoo.utils.CommonItemModel;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ import java.util.List;
 public class FarmerProfileAdapter extends RecyclerView.Adapter<CommonItemViewHolder>  {
 
     private Context context;
-    private List<FarmerProfileModel> modelList;
+    private List<CommonItemModel> modelList;
 
-    public FarmerProfileAdapter(Context context, List<FarmerProfileModel> modelList) {
+    public FarmerProfileAdapter(Context context, List<CommonItemModel> modelList) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -32,7 +33,7 @@ public class FarmerProfileAdapter extends RecyclerView.Adapter<CommonItemViewHol
 
     @Override
     public void onBindViewHolder(CommonItemViewHolder holder, int position) {
-        final FarmerProfileModel model = modelList.get(position);
+        final CommonItemModel model = modelList.get(position);
         holder.tvTitle.setText(model.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,6 +15,7 @@ import com.example.dong.yomoo.activities.butcher.ButcherHomeActivity;
 import com.example.dong.yomoo.activities.farmer.FarmerHomeActivity;
 import com.example.dong.yomoo.activities.supporter.SupporterHomeActivity;
 import com.example.dong.yomoo.activities.vendor.VendorHomeActivity;
+import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -106,6 +107,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         Global.user = user;
                         switch (user.getType()) {
                             case User.FARMER:
+                                Global.farmer = (Farmer) result.getData();
                                 toHome.setClass(context, FarmerHomeActivity.class);
                                 break;
                             case User.VENDOR:

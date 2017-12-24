@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseFragment;
 import com.example.dong.yomoo.activities.butcher.LivestockDemandPublishActivity;
+import com.example.dong.yomoo.utils.CommonItemModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class FarmerProfileFragment extends BaseFragment {
     private RecyclerView recyclerView;
-    private List<FarmerProfileModel> modelList;
+    private List<CommonItemModel> modelList;
     private FarmerProfileAdapter adapter;
 
     @Nullable
@@ -40,10 +41,10 @@ public class FarmerProfileFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         modelList = new ArrayList<>();
-        FarmerProfileModel[] models = {
-                new FarmerProfileModel("账务信息", FarmerAccountInfoActivity.class),
-                new FarmerProfileModel("个人信息", FarmerInfoActivity.class),
-                new FarmerProfileModel("发布需求", LivestockDemandPublishActivity.class)
+        CommonItemModel[] models = {
+                new CommonItemModel("账务信息", FarmerAccountInfoActivity.class),
+                new CommonItemModel("个人信息", FarmerInfoActivity.class),
+                new CommonItemModel("发布需求", LivestockDemandPublishActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 

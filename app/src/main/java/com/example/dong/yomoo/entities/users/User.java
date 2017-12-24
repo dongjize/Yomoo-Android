@@ -12,6 +12,7 @@ public class User extends BaseModel {
     protected String password;
     protected String salt;
     protected String type;
+    protected String intro;
 
 
     public static final String FARMER = "farmer";
@@ -57,5 +58,13 @@ public class User extends BaseModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 }

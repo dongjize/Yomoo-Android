@@ -14,4 +14,9 @@ public class HttpAPI {
 
     public static final String REGISTER = DOMAIN + "register/";
     public static final String LOGIN = DOMAIN + "login/";
+    public static final String COMPLETE_INFO = DOMAIN + "complete_info/";
+
+
+    public static final String FARMER_INFO = DOMAIN + "farmer/";
+
 }

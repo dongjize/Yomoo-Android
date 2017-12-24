@@ -1,14 +1,14 @@
-package com.example.dong.yomoo.activities.farmer.profile;
+package com.example.dong.yomoo.utils;
 
 /**
  * Created by dong on 22/12/2017.
  */
 
-public class FarmerProfileModel {
+public class CommonItemModel {
     private String title;
     private Class<?> cls;
 
-    public FarmerProfileModel(String title, Class<?> cls) {
+    public CommonItemModel(String title, Class<?> cls) {
         this.title = title;
         this.cls = cls;
     }
