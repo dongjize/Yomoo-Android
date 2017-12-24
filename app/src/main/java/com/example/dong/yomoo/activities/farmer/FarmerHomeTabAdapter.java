@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.adapter;
+package com.example.dong.yomoo.activities.farmer;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

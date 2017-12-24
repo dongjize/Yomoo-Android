@@ -14,6 +14,7 @@ import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
+import com.example.dong.yomoo.utils.CommonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,28 +72,43 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    private void register() {
+        String phone = etPhone.getText().toString();
+        String password = etPassword.getText().toString();
+
+        if (!CommonUtils.checkMobileNumber(phone)) {
+            showToast("手机号格式有误");
+            return;
+        }
+
+        if (password.length() < 6 || password.length() > 20) {
+            showToast("密码长度应在6到20位之间");
+            return;
+        }
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("password", password);
+        params.put("type", userType);
+        RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.REGISTER);
+        httpHandler.userRegister(requestBean, new HttpCallback() {
+            @Override
+            public void onSuccess(BaseResult result) {
+                showToast("注册成功！！！");
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                showToast("注册失败！！！");
+            }
+        });
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_register:
-                String phone = etPhone.getText().toString();
-                String password = etPassword.getText().toString();
-                Map<String, Object> params = new HashMap<>();
-                params.put("phone", phone);
-                params.put("password", password);
-                params.put("type", userType);
-                RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.REGISTER);
-                httpHandler.userRegister(requestBean, new HttpCallback() {
-                    @Override
-                    public void onSuccess(BaseResult result) {
-                        showToast("注册成功！！！");
-                    }
-
-                    @Override
-                    public void onFailure(String errMsg) {
-                        showToast("注册失败！！！");
-                    }
-                });
+                register();
                 break;
         }
     }

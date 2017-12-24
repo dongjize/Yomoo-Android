@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,20 +21,22 @@ import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
 import com.example.dong.yomoo.utils.Global;
+import com.example.dong.yomoo.utils.L;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by dong on 16/12/2017.
+ * 用户登录页面，根据不同身份跳转到不同的主页
  */
-
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
     private EditText etPhone, etPassword;
     private Button loginBtn;
     private TextView tvRegisterNow;
+    private CheckBox checkBox;
+    private boolean rememberMe = false;
 
     private String from;
 
@@ -54,9 +58,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         etPhone = findViewById(R.id.et_phone);
         etPassword = findViewById(R.id.et_password);
         tvRegisterNow = findViewById(R.id.tv_register_now);
+        checkBox = findViewById(R.id.checkbox_remember_me);
 
         loginBtn.setOnClickListener(this);
         tvRegisterNow.setOnClickListener(this);
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                rememberMe = b;
+            }
+        });
     }
 
     @Override
@@ -84,6 +96,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Map<String, Object> params = new HashMap<>();
                 params.put("phone", phone);
                 params.put("password", password);
+                params.put("remember_me", rememberMe + "");
                 RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.LOGIN);
                 httpHandler.userLogin(requestBean, new HttpCallback() {
                     @Override
@@ -113,6 +126,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void onFailure(String errMsg) {
                         showToast(errMsg);
+                        L.d(errMsg);
                     }
                 });
                 break;

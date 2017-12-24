@@ -7,9 +7,8 @@ import android.support.v4.view.ViewPager;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.activities.farmer.adapter.FarmerHomeTabAdapter;
-import com.example.dong.yomoo.activities.farmer.fragments.profile.FarmerProfileFragment;
-import com.example.dong.yomoo.activities.farmer.fragments.ServicesForFarmerFragment;
+import com.example.dong.yomoo.activities.farmer.profile.FarmerProfileFragment;
+import com.example.dong.yomoo.activities.farmer.services.FarmerServiceFragment;
 import com.example.dong.yomoo.application.MyApplication;
 
 import java.util.ArrayList;
@@ -17,13 +16,8 @@ import java.util.List;
 
 /**
  * 养殖户主页有2个tab：
- * tab1：“我”页面 FarmerProfileFragment
- * tab2：ServicesForFarmerFragment
- * 牲畜需求信息列表页 LivestockDemandListFragment
- * 饲料销售商列表页 VendorListFragment
- * 养殖方法列表页 BreedingInfoListActivity
- * <p>
- * Created by dong on 17/12/2017.
+ * tab1："我的"页面 FarmerProfileFragment
+ * tab2："服务"页面 FarmerServiceFragment
  */
 
 public class FarmerHomeActivity extends BaseActivity {
@@ -39,7 +33,7 @@ public class FarmerHomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_home_activity);
-        application = MyApplication.getInstance();
+        application = MyApplication.getInstance(); // TODO 用来退出app
 
         initToolbar();
 
@@ -49,7 +43,7 @@ public class FarmerHomeActivity extends BaseActivity {
         //设置TabLayout
         fragments = new ArrayList<>();
         profileFragment = new FarmerProfileFragment();
-        servicesFragment = new ServicesForFarmerFragment();
+        servicesFragment = new FarmerServiceFragment();
         fragments.add(profileFragment);
         fragments.add(servicesFragment);
         List<String> titles = new ArrayList<>();

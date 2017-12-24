@@ -80,7 +80,7 @@ public class HttpHandler extends BaseHttpHandler {
                     if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
                         Gson gson = new Gson();
                         JSONObject data = jsonObject.getJSONObject("data");
-                        User user = gson.fromJson(data.toString(), new TypeToken<User>() {
+                        User user = gson.fromJson(data.getJSONObject("user").toString(), new TypeToken<User>() {
                         }.getType());
                         BaseResult result = new BaseResult();
                         result.setValue("");

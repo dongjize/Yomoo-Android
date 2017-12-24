@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer;
+package com.example.dong.yomoo.activities.farmer.profile;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import com.example.dong.yomoo.activities.BaseActivity;
 /**
  * Created by dong on 22/12/2017.
  */
-
 public class FarmerAccountInfoActivity extends BaseActivity {
 
     @Override

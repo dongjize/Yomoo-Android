@@ -37,7 +37,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <!--欢迎页面-->
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/app_name"
@@ -48,35 +50,55 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--注册登录-->
         <activity
             android:name=".activities.RegisterActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.LoginActivity"
             android:launchMode="singleTask" />
+
+        <!-- farmer home-->
+
         <activity
             android:name=".activities.farmer.FarmerHomeActivity"
             android:launchMode="singleTask" />
         <activity
+            android:name=".activities.farmer.profile.FarmerAccountInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.profile.FarmerInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.profile.BreedingInfoDemandPublishActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.LivestockDemandListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.VendorListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.BreedingInfoListActivity"
+            android:launchMode="singleTask" />
+
+        <!--vendor home-->
+        <activity
             android:name=".activities.vendor.VendorHomeActivity"
             android:launchMode="singleTask" />
+
+        <!--butcher home-->
         <activity
             android:name=".activities.butcher.ButcherHomeActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.supporter.SupporterHomeActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.farmer.FarmerAccountInfoActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.farmer.FarmerInfoActivity"
-            android:launchMode="singleTask" />
-        <activity
             android:name=".activities.butcher.LivestockDemandPublishActivity"
             android:launchMode="singleTask" />
+
+        <!--supporter home-->
         <activity
-            android:name=".activities.farmer.BreedingInfoListActivity"
+            android:name=".activities.supporter.SupporterHomeActivity"
             android:launchMode="singleTask" />
     </application>
 

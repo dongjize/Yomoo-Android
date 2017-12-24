@@ -6,9 +6,8 @@ import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
 
 /**
- * Created by dong on 17/12/2017.
+ * 肉品加工商发布牲畜需求信息页面
  */
-
 public class LivestockDemandPublishActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

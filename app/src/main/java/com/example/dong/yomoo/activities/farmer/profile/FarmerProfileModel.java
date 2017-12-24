@@ -1,6 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.fragments.profile;
-
-import android.os.Bundle;
+package com.example.dong.yomoo.activities.farmer.profile;
 
 /**
  * Created by dong on 22/12/2017.
