@@ -54,12 +54,15 @@
         <!--注册登录-->
         <activity
             android:name=".activities.RegisterActivity"
+            android:label="注册"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.CompleteInfoActivity"
+            android:label="完善资料"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.LoginActivity"
+            android:label="登录"
             android:launchMode="singleTask" />
 
         <!-- farmer home-->
@@ -69,21 +72,30 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.profile.FarmerAccountInfoActivity"
+            android:label="账户信息"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.profile.FarmerInfoActivity"
+            android:label="个人信息"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.profile.BreedingInfoDemandPublishActivity"
+            android:label="需求发布"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.LivestockDemandListActivity"
+            android:label="牲畜需求"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.VendorListActivity"
+            android:label="饲料销售商"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.BreedingInfoListActivity"
+            android:label="养殖技术"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.BreedingInfoDetailActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.VendorInfoDetailActivity"

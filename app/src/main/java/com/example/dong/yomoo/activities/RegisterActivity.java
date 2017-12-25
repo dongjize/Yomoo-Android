@@ -93,18 +93,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         params.put("phone", phone);
         params.put("password", password);
         params.put("type", userType);
-        RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.REGISTER);
-        httpHandler.userRegister(requestBean, new HttpCallback() {
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.REGISTER, params);
+        httpHandler.userRegister(requestBean, new HttpCallback<User>() {
             @Override
             public void onSuccess(BaseResult result) {
                 showToast("注册成功！");
                 Global.user = (User) result.getData();
                 Global.isLogin = true;
                 if (userType.equals(User.FARMER)) {
-                    Global.farmer = (Farmer) result.getData();
+                    Global.farmer = (Farmer) Global.user;
                 }
                 Intent intent = new Intent(context, CompleteInfoActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             @Override

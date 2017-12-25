@@ -9,10 +9,18 @@ import java.util.Date;
  */
 
 public class BreedingInfo extends BaseModel {
+    private long id;
     private User publisher;
     private String title;
     private String content;
-    private Date timestamp;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public User getPublisher() {
         return publisher;
@@ -38,11 +46,4 @@ public class BreedingInfo extends BaseModel {
         this.content = content;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
 }

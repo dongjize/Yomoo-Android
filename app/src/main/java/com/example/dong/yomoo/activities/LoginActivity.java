@@ -98,16 +98,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 params.put("phone", phone);
                 params.put("password", password);
                 params.put("remember_me", rememberMe + "");
-                RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.LOGIN);
-                httpHandler.userLogin(requestBean, new HttpCallback() {
+                RequestBean requestBean = new RequestBean(TAG, HttpAPI.LOGIN, params);
+                httpHandler.userLogin(requestBean, new HttpCallback<User>() {
                     @Override
-                    public void onSuccess(BaseResult result) {
+                    public void onSuccess(BaseResult<User> result) {
                         Intent toHome = new Intent();
-                        User user = (User) result.getData();
+                        User user = result.getData();
                         Global.user = user;
                         switch (user.getType()) {
                             case User.FARMER:
-                                Global.farmer = (Farmer) result.getData();
+                                Global.farmer = (Farmer) Global.user;
                                 toHome.setClass(context, FarmerHomeActivity.class);
                                 break;
                             case User.VENDOR:
@@ -123,6 +123,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 break;
                         }
                         startActivity(toHome);
+                        finish();
                     }
 
                     @Override

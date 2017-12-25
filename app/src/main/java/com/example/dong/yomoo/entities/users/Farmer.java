@@ -1,20 +1,24 @@
 package com.example.dong.yomoo.entities.users;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
+
 /**
  * Created by dong on 16/12/2017.
  */
 
 public class Farmer extends User {
-    private long farmerId; // PK
 
     private String village;
     private String group;
+    @SerializedName("street_num")
     private String streetNum;
     private String livestock;
+    @SerializedName("exp_livestock")
     private String expLivestock;
 
     public Farmer() {
-        setType(FARMER);
     }
 
     public Farmer(User user) {
@@ -22,14 +26,56 @@ public class Farmer extends User {
         setPhone(user.getPhone());
         setPassword(user.getPassword());
         setSalt(user.getSalt());
+        setName(user.getName());
+        setIntro(user.getIntro());
     }
 
-    public long getFarmerId() {
-        return farmerId;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setFarmerId(long farmerId) {
-        this.farmerId = farmerId;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 
     public String getVillage() {

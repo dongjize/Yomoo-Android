@@ -9,19 +9,10 @@ import java.io.Serializable;
  */
 
 public class BaseModel implements Serializable {
-    protected Long id;
     @SerializedName("created_at")
     protected String createdAt;
     @SerializedName("updated_at")
     protected String updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCreatedAt() {
         return createdAt;

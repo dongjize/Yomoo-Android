@@ -38,7 +38,7 @@ public class VolleyUtils {
      * @param errorListener
      */
     public void httpGetString(RequestBean requestBean, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        String url = requestBean.getUrl();
+        String url = getParams(requestBean.getUrl(), (HashMap<?, ?>) requestBean.getParams());
         StringRequest request = new StringRequest(url, listener, errorListener) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -124,11 +124,16 @@ public class VolleyUtils {
      * @param params
      * @return
      */
-    private String getParams(HashMap<?, ?> params) {
+    private String getParams(String url, HashMap<?, ?> params) {
         if (params == null) {
-            return "";
+            return url;
         }
         StringBuffer sb = new StringBuffer();
+        if (url.endsWith("/")) {
+            sb.append(url.substring(0, url.length() - 1));
+        } else {
+            sb.append(url);
+        }
         sb.append("?");
         Iterator<?> iterator = params.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -140,7 +145,7 @@ public class VolleyUtils {
         if (sb.length() > 1) {
             return sb.substring(0, sb.length() - 1);
         }
-        return "";
+        return url;
     }
 
 }

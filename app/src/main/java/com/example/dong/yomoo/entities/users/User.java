@@ -5,8 +5,9 @@ import com.example.dong.yomoo.entities.BaseModel;
 /**
  * Created by dong on 16/12/2017.
  */
-
 public class User extends BaseModel {
+    protected long id; // PK
+
     protected String phone;
     protected String name;
     protected String password;
@@ -14,11 +15,18 @@ public class User extends BaseModel {
     protected String type;
     protected String intro;
 
-
     public static final String FARMER = "farmer";
     public static final String VENDOR = "vendor";
     public static final String BUTCHER = "butcher";
     public static final String SUPPORTER = "supporter";
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPhone() {
         return phone;

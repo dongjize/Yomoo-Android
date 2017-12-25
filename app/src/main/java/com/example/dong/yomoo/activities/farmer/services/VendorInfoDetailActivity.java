@@ -26,6 +26,11 @@ public class VendorInfoDetailActivity extends BaseActivity {
                 vendorId = bundle.getLong("vendor_id");
             }
         }
+
+        initToolbar();
+
+        recyclerView = findViewById(R.id.recycler_view);
+
     }
 
     @Override

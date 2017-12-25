@@ -4,11 +4,11 @@ package com.example.dong.yomoo.http;
  * Created by dong on 16/12/2017.
  */
 
-public class BaseResult {
+public class BaseResult<T> {
     private int resultCode;
     private String message;
     private String value;
-    private Object data;
+    private T data;
     private boolean hasMore;
 
     public int getResultCode() {
@@ -35,11 +35,11 @@ public class BaseResult {
         this.value = value;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 

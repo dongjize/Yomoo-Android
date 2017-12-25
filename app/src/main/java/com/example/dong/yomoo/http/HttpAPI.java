@@ -15,8 +15,14 @@ public class HttpAPI {
     public static final String REGISTER = DOMAIN + "register/";
     public static final String LOGIN = DOMAIN + "login/";
     public static final String COMPLETE_INFO = DOMAIN + "complete_info/";
+    public static final String LOGOUT = DOMAIN + "logout/";
 
-
+    //获取养殖户信息
     public static final String FARMER_INFO = DOMAIN + "farmer/";
 
+    //获取用户列表
+    public static final String VENDOR_LIST = DOMAIN + "users/";
+
+    //获取某个经销商的饲料列表
+    public static final String FODDER_LIST = DOMAIN + "fodder/";
 }

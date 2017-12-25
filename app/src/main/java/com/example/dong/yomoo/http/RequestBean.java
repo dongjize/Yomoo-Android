@@ -8,13 +8,13 @@ import java.util.Map;
 
 public class RequestBean {
     private String tag;
-    private Map<String, Object> params;
     private String url;
+    private Map<String, Object> params;
 
-    public RequestBean(String tag, Map<String, Object> params, String url) {
+    public RequestBean(String tag, String url, Map<String, Object> params) {
         this.tag = tag;
-        this.params = params;
         this.url = url;
+        this.params = params;
     }
 
     public String getTag() {

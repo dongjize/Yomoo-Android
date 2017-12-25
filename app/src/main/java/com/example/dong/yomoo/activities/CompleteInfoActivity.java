@@ -45,7 +45,8 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
         submitBtn.setOnClickListener(this);
         farmerInfoLayout = findViewById(R.id.farmer_info_layout);
 
-        isFarmer = Global.user.getType().equals(User.FARMER);
+//        isFarmer = Global.user.getType().equals(User.FARMER);
+
         if (isFarmer) {
             farmerInfoLayout.setVisibility(View.VISIBLE);
             etVillage = findViewById(R.id.et_village);
@@ -86,7 +87,7 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
             showToast("姓名不能为空");
         }
         Map<String, Object> params = new HashMap<>();
-        params.put("userId", Global.user.getId() + "");
+        params.put("id", Global.user.getId() + "");
         params.put("name", name);
         if (isFarmer) {
             params.put("village", etVillage.getText().toString());
@@ -96,18 +97,19 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
             params.put("exp_livestock", etExpLivestock.getText().toString());
             params.put("intro", etGroup.getText().toString());
         }
-        RequestBean requestBean = new RequestBean(TAG, params, HttpAPI.COMPLETE_INFO);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.COMPLETE_INFO, params);
 
-        httpHandler.userCompleteInfo(requestBean, new HttpCallback() {
+        httpHandler.userCompleteInfo(requestBean, new HttpCallback<User>() {
             @Override
             public void onSuccess(BaseResult result) {
                 showToast("资料完善成功！");
                 Global.user = (User) result.getData();
-                String userType = Global.user.getType();
+                if (isFarmer) {
+                    Global.farmer = (Farmer) Global.user;
+                }
                 Intent intent = new Intent();
-                switch (userType) {
+                switch (Global.user.getType()) {
                     case User.FARMER:
-                        Global.farmer = (Farmer) result.getData();
                         intent.setClass(context, FarmerHomeActivity.class);
                         break;
                     case User.VENDOR:
@@ -121,6 +123,7 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
                         break;
                 }
                 startActivity(intent);
+                finish();
             }
 
             @Override

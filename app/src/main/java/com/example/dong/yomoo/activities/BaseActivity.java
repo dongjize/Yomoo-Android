@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.dong.yomoo.application.MyApplication;
-import com.example.dong.yomoo.http.handlers.BaseHttpHandler;
 import com.example.dong.yomoo.http.handlers.HttpHandler;
 
 /**
