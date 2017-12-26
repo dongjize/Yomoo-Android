@@ -33,7 +33,8 @@ public class VendorHomeActivity extends BaseActivity {
         VendorHomeModel[] models = {
                 new VendorHomeModel("我的订单", "", HistoryOrderListActivity.class),
                 new VendorHomeModel("我的库存", "", FodderStockListActivity.class),
-                new VendorHomeModel("添加进货信息", "", FodderPurchaseListActivity.class)
+                new VendorHomeModel("历史进货", "", PurchaseListActivity.class),
+                new VendorHomeModel("添加进货信息", "", PurchaseInputActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 

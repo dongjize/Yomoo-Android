@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.dong.yomoo.entities.BreedingInfo;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
@@ -274,6 +275,29 @@ public class HttpHandler extends BaseHttpHandler {
                     callback.onFailure(e.toString());
                 }
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void postBreedingInfo(RequestBean requestBean, final HttpCallback<BreedingInfo> callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    BaseResult<List<User>> result = new BaseResult<>();
+                    result.setData(null);
+                    result.setValue("");
+                    result.setMessage(jsonObject.getString("message"));
+                    result.setResultCode(jsonObject.getInt("code"));
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
             }
         }, new Response.ErrorListener() {
             @Override

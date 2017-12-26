@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
@@ -18,7 +17,6 @@ import java.util.List;
 /**
  * Created by dong on 25/12/2017.
  */
-
 public class BreedingInfoAdapter extends BaseLoadMoreRecyclerAdapter<String, BreedingInfoAdapter.BreedingInfoViewHolder> {
 
     private Context context;

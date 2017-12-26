@@ -3,10 +3,9 @@ package com.example.dong.yomoo.activities.vendor;
 import com.example.dong.yomoo.activities.BaseActivity;
 
 /**
- * Created by dong on 17/12/2017.
+ * （饲料销售商）进货列表页
  */
-
-public class FodderPurchaseListActivity extends BaseActivity {
+public class PurchaseListActivity extends BaseActivity {
     @Override
     protected void initToolbar() {
 

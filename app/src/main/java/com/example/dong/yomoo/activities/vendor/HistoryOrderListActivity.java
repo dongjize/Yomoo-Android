@@ -8,8 +8,8 @@ import com.example.dong.yomoo.activities.BaseActivity;
 /**
  * Created by dong on 16/12/2017.
  */
-
 public class HistoryOrderListActivity extends BaseActivity {
+
     private RecyclerView orderListView;
 
     @Override

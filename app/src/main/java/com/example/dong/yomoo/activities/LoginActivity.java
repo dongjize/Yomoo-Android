@@ -2,6 +2,7 @@ package com.example.dong.yomoo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -92,47 +93,59 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(toRegister);
                 break;
             case R.id.btn_login:
-                String phone = etPhone.getText().toString();
-                String password = etPassword.getText().toString();
-                Map<String, Object> params = new HashMap<>();
-                params.put("phone", phone);
-                params.put("password", password);
-                params.put("remember_me", rememberMe + "");
-                RequestBean requestBean = new RequestBean(TAG, HttpAPI.LOGIN, params);
-                httpHandler.userLogin(requestBean, new HttpCallback<User>() {
-                    @Override
-                    public void onSuccess(BaseResult<User> result) {
-                        Intent toHome = new Intent();
-                        User user = result.getData();
-                        Global.user = user;
-                        switch (user.getType()) {
-                            case User.FARMER:
-                                Global.farmer = (Farmer) Global.user;
-                                toHome.setClass(context, FarmerHomeActivity.class);
-                                break;
-                            case User.VENDOR:
-                                toHome.setClass(context, VendorHomeActivity.class);
-                                break;
-                            case User.BUTCHER:
-                                toHome.setClass(context, ButcherHomeActivity.class);
-                                break;
-                            case User.SUPPORTER:
-                                toHome.setClass(context, SupporterHomeActivity.class);
-                                break;
-                            default:
-                                break;
-                        }
-                        startActivity(toHome);
-                        finish();
-                    }
-
-                    @Override
-                    public void onFailure(String errMsg) {
-                        showToast(errMsg);
-                        L.d(errMsg);
-                    }
-                });
+                login();
                 break;
         }
+    }
+
+    private void login() {
+        String phone = etPhone.getText().toString();
+        String password = etPassword.getText().toString();
+        if (TextUtils.isEmpty(phone)) {
+            showToast("手机号不能为空");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            showToast("密码不能为空");
+            return;
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put("phone", phone);
+        params.put("password", password);
+        params.put("remember_me", rememberMe + "");
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.LOGIN, params);
+        httpHandler.userLogin(requestBean, new HttpCallback<User>() {
+            @Override
+            public void onSuccess(BaseResult<User> result) {
+                Intent toHome = new Intent();
+                User user = result.getData();
+                Global.user = user;
+                switch (user.getType()) {
+                    case User.FARMER:
+                        Global.farmer = (Farmer) Global.user;
+                        toHome.setClass(context, FarmerHomeActivity.class);
+                        break;
+                    case User.VENDOR:
+                        toHome.setClass(context, VendorHomeActivity.class);
+                        break;
+                    case User.BUTCHER:
+                        toHome.setClass(context, ButcherHomeActivity.class);
+                        break;
+                    case User.SUPPORTER:
+                        toHome.setClass(context, SupporterHomeActivity.class);
+                        break;
+                    default:
+                        break;
+                }
+                startActivity(toHome);
+                finish();
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                showToast(errMsg);
+                L.d(errMsg);
+            }
+        });
     }
 }

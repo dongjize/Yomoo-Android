@@ -32,7 +32,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="名字"
-                    android:maxLength="11"
                     android:maxLines="1"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
@@ -52,7 +51,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="村"
-                        android:maxLength="11"
                         android:maxLines="1"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
@@ -66,7 +64,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="组"
-                        android:maxLength="11"
                         android:maxLines="1"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
@@ -80,7 +77,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="门牌号"
-                        android:maxLength="11"
                         android:maxLines="1"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
@@ -94,7 +90,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="已饲养牲畜（如：3头牛，5头猪）"
-                        android:maxLength="11"
                         android:maxLines="1"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
@@ -108,7 +103,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="预计饲养牲畜（如：6头牛，8头猪）"
-                        android:maxLength="11"
                         android:maxLines="1"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
@@ -124,7 +118,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="介绍一下自己（选填）"
-                    android:maxLength="11"
                     android:maxLines="1"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
