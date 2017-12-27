@@ -18,6 +18,10 @@ public class FarmerAccountInfoActivity extends BaseActivity {
 
     @Override
     protected void initToolbar() {
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 }

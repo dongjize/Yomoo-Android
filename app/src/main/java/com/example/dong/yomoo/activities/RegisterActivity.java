@@ -18,14 +18,15 @@ import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
 import com.example.dong.yomoo.utils.CommonUtils;
 import com.example.dong.yomoo.utils.Global;
+import com.example.dong.yomoo.utils.L;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by dong on 16/12/2017.
+ * 用户注册页面
+ * 注册时需提交的字段：手机号，密码，用户类型
  */
-
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
@@ -111,6 +112,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onFailure(String errMsg) {
                 showToast(errMsg);
+                L.d(errMsg);
             }
         });
     }
