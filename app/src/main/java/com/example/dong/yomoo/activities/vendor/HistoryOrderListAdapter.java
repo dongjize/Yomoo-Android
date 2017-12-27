@@ -1,6 +1,8 @@
 package com.example.dong.yomoo.activities.vendor;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +35,22 @@ public class HistoryOrderListAdapter extends BaseLoadMoreRecyclerAdapter<String,
 
     @Override
     public void onBindItemViewHolder(HistoryOrderListViewHolder holder, int position) {
-        OrderEntry orderEntry = entryList.get(position);
-
+        final OrderEntry orderEntry = entryList.get(position);
+        holder.tvNameSpec.setText(String.format("%s %s",
+                orderEntry.getFodderOfVendor().getFodder().getName(),
+                orderEntry.getFodderOfVendor().getFodder().getFodderSpec()));
+        holder.tvSellPrice.setText(String.format("%s 元", orderEntry.getSellPrice()));
+        holder.tvQuantity.setText(String.format("%s", orderEntry.getSellPrice()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, HistoryOrderDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putLong("entry_id", orderEntry.getId());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
 

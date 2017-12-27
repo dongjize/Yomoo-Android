@@ -20,6 +20,14 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fodder_stock_list_activity);
+
+        initToolbar();
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        recyclerView = findViewById(R.id.recycler_view);
+        // TODO add adapter
     }
 
     @Override

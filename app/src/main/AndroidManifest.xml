@@ -116,6 +116,10 @@
             android:label="我的订单"
             android:launchMode="singleTask" />
         <activity
+            android:name=".activities.vendor.HistoryOrderDetailActivity"
+            android:label="订单详情"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".activities.vendor.PurchaseInputActivity"
             android:label="录入进货信息"
             android:launchMode="singleTask" />
@@ -139,6 +143,11 @@
             android:name=".activities.supporter.SupporterHomeActivity"
             android:label="首页"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.FodderStockDetailActivity"
+            android:label="饲料详情"
+            android:launchMode="singleTask" />
+
     </application>
 
 </manifest>
