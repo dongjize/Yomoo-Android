@@ -25,4 +25,11 @@ public class HttpAPI {
 
     //获取某个经销商的饲料列表
     public static final String FODDER_LIST = DOMAIN + "fodder/";
+
+
+    public static final String POST_LIVESTOCK_DEMAND = DOMAIN + "post_livestock_demand/";
+
+    public static final String POST_BREEDING_INFO = DOMAIN + "post_breeding_info/";
+
+
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dong.yomoo.entities.BreedingInfo;
+import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
@@ -284,17 +285,24 @@ public class HttpHandler extends BaseHttpHandler {
         });
     }
 
+    /**
+     * 发布养殖技术（饲料销售商）
+     *
+     * @param requestBean
+     * @param callback
+     */
     public void postBreedingInfo(RequestBean requestBean, final HttpCallback<BreedingInfo> callback) {
         volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    BaseResult<List<User>> result = new BaseResult<>();
+                    BaseResult<BreedingInfo> result = new BaseResult<>();
                     result.setData(null);
                     result.setValue("");
                     result.setMessage(jsonObject.getString("message"));
                     result.setResultCode(jsonObject.getInt("code"));
+                    callback.onSuccess(result);
                 } catch (JSONException e) {
                     callback.onFailure(e.toString());
                 }
@@ -307,4 +315,33 @@ public class HttpHandler extends BaseHttpHandler {
         });
     }
 
+    /**
+     * 发布牲畜需求信息（肉品加工商）
+     *
+     * @param requestBean
+     * @param callback
+     */
+    public void postLivestockDemand(RequestBean requestBean, final HttpCallback<LivestockDemand> callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    BaseResult<LivestockDemand> result = new BaseResult<>();
+                    result.setData(null);
+                    result.setValue("");
+                    result.setMessage(jsonObject.getString("message"));
+                    result.setResultCode(jsonObject.getInt("code"));
+                    callback.onSuccess(result);
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
 }

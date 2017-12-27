@@ -69,6 +69,7 @@
 
         <activity
             android:name=".activities.farmer.FarmerHomeActivity"
+            android:label="首页"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.profile.FarmerAccountInfoActivity"
@@ -80,7 +81,7 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.profile.BreedingInfoDemandPublishActivity"
-            android:label="需求发布"
+            android:label="发布需求"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.farmer.services.LivestockDemandListActivity"
@@ -104,19 +105,39 @@
         <!--vendor home-->
         <activity
             android:name=".activities.vendor.VendorHomeActivity"
+            android:label="首页"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.FodderStockListActivity"
+            android:label="我的库存"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.HistoryOrderListActivity"
+            android:label="我的订单"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.PurchaseInputActivity"
+            android:label="录入进货信息"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.PurchaseListActivity"
+            android:label="进货列表"
             android:launchMode="singleTask" />
 
         <!--butcher home-->
         <activity
             android:name=".activities.butcher.ButcherHomeActivity"
+            android:label="首页"
             android:launchMode="singleTask" />
         <activity
             android:name=".activities.butcher.LivestockDemandPublishActivity"
+            android:label="发布需求"
             android:launchMode="singleTask" />
 
         <!--supporter home-->
         <activity
             android:name=".activities.supporter.SupporterHomeActivity"
+            android:label="首页"
             android:launchMode="singleTask" />
     </application>
 

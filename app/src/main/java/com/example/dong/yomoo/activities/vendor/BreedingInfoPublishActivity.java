@@ -76,7 +76,7 @@ public class BreedingInfoPublishActivity extends BaseActivity implements View.On
         params.put("title", title);
         params.put("content", content);
         params.put("publisher", Global.user.getId());
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.LOGIN, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.POST_BREEDING_INFO, params);
         httpHandler.postBreedingInfo(requestBean, new HttpCallback<BreedingInfo>() {
             @Override
             public void onSuccess(BaseResult<BreedingInfo> result) {
