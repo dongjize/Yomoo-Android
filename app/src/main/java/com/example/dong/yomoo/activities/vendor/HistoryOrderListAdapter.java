@@ -44,7 +44,7 @@ public class HistoryOrderListAdapter extends BaseLoadMoreRecyclerAdapter<String,
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, HistoryOrderDetailActivity.class);
+                Intent intent = new Intent(context, OrderEntryDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("entry_id", orderEntry.getId());
                 intent.putExtras(bundle);

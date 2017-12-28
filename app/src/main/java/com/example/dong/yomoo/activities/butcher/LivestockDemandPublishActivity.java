@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 肉品加工商发布牲畜需求信息页面
+ * （肉品加工商）发布牲畜需求信息页面
  */
 public class LivestockDemandPublishActivity extends BaseActivity implements View.OnClickListener {
 

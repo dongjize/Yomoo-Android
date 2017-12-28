@@ -1,7 +1,7 @@
 package com.example.dong.yomoo.http;
 
 /**
- * Created by dong on 20/12/2017.
+ * URL列表
  */
 
 public class HttpAPI {
@@ -17,7 +17,7 @@ public class HttpAPI {
     public static final String COMPLETE_INFO = DOMAIN + "complete_info/";
     public static final String LOGOUT = DOMAIN + "logout/";
 
-    //获取养殖户信息
+    //获取某个养殖户信息
     public static final String FARMER_INFO = DOMAIN + "farmer/";
 
     //获取用户列表
@@ -30,6 +30,8 @@ public class HttpAPI {
     public static final String POST_LIVESTOCK_DEMAND = DOMAIN + "post_livestock_demand/";
 
     public static final String POST_BREEDING_INFO = DOMAIN + "post_breeding_info/";
+
+    public static final String POST_BREEDING_INFO_DEMAND = DOMAIN + "post_breeding_info_demand/";
 
 
 }

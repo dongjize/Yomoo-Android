@@ -116,7 +116,7 @@
             android:label="我的订单"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.vendor.HistoryOrderDetailActivity"
+            android:name=".activities.vendor.OrderEntryDetailActivity"
             android:label="订单详情"
             android:launchMode="singleTask" />
         <activity
@@ -147,6 +147,7 @@
             android:name=".activities.farmer.services.FodderStockDetailActivity"
             android:label="饲料详情"
             android:launchMode="singleTask" />
+        <activity android:name=".activities.farmer.LivestockDemandDetailActivity" />
 
     </application>
 

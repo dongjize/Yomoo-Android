@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dong.yomoo.entities.BreedingInfo;
+import com.example.dong.yomoo.entities.BreedingInfoDemand;
 import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
@@ -328,6 +329,30 @@ public class HttpHandler extends BaseHttpHandler {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     BaseResult<LivestockDemand> result = new BaseResult<>();
+                    result.setData(null);
+                    result.setValue("");
+                    result.setMessage(jsonObject.getString("message"));
+                    result.setResultCode(jsonObject.getInt("code"));
+                    callback.onSuccess(result);
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void postBreedingInfoDemand(RequestBean requestBean, final HttpCallback<BreedingInfoDemand> callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    BaseResult<BreedingInfoDemand> result = new BaseResult<>();
                     result.setData(null);
                     result.setValue("");
                     result.setMessage(jsonObject.getString("message"));
