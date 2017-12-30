@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dong.yomoo.entities.BreedingInfo;
 import com.example.dong.yomoo.entities.BreedingInfoDemand;
+import com.example.dong.yomoo.entities.FodderOfVendor;
 import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
@@ -358,6 +359,40 @@ public class HttpHandler extends BaseHttpHandler {
                     result.setMessage(jsonObject.getString("message"));
                     result.setResultCode(jsonObject.getInt("code"));
                     callback.onSuccess(result);
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void getFodderOfVendorListByVendor(RequestBean requestBean, final HttpCallback<List<FodderOfVendor>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<FodderOfVendor> fvList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<FodderOfVendor>>() {
+                                }.getType());
+                        BaseResult<List<FodderOfVendor>> result = new BaseResult<>();
+                        result.setData(fvList);
+                        result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
                 } catch (JSONException e) {
                     callback.onFailure(e.toString());
                 }

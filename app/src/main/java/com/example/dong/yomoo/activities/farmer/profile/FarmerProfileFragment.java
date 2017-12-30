@@ -41,13 +41,13 @@ public class FarmerProfileFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         modelList = new ArrayList<>();
+
         CommonItemModel[] models = {
                 new CommonItemModel("账务信息", FarmerAccountInfoActivity.class),
                 new CommonItemModel("个人信息", FarmerInfoActivity.class),
                 new CommonItemModel("发布需求", BreedingInfoDemandPublishActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
-
         recyclerView = contentView.findViewById(R.id.recycler_view);
         adapter = new FarmerProfileAdapter(context, modelList);
         RecyclerView.LayoutManager lm = new GridLayoutManager(context, 2);

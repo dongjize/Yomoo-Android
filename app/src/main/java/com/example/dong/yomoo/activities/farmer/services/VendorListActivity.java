@@ -1,10 +1,14 @@
 package com.example.dong.yomoo.activities.farmer.services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
@@ -28,7 +32,8 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
     private static final String TAG = VendorListActivity.class.getSimpleName();
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
-    private VendorListAdapter mAdapter;
+    private ListView mListView;
+    private VendorListAdapter2 mAdapter;
     private String offset = "0";
     private List<User> vendorList;
 
@@ -39,8 +44,8 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
-        recyclerView = findViewById(R.id.recycler_view);
         vendorList = new ArrayList<>();
+        mListView = findViewById(R.id.list_view);
 
         getVendorList();
     }
@@ -67,12 +72,21 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
                 offset = result.getValue();
                 vendorList = result.getData();
                 if (vendorList != null) {
+//                    mAdapter.notifyDataSetChanged();
                     if (mAdapter == null) {
-                        mAdapter = new VendorListAdapter(context, vendorList);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                        recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.setAdapter(mAdapter);
+                        mAdapter = new VendorListAdapter2(context, vendorList);
+                        mListView.setAdapter(mAdapter);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                final User user = vendorList.get(position);
+                                Intent intent = new Intent(context, VendorInfoDetailActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putLong("vendor_id", user.getId());
+                                intent.putExtras(bundle);
+                                context.startActivity(intent);
+                            }
+                        });
                     } else {
                         mAdapter.notifyDataSetChanged();
                     }

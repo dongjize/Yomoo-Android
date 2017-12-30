@@ -53,7 +53,6 @@ public class FarmerInfoActivity extends BaseActivity {
     private void getFarmerInfo() {
         Map<String, Object> params = new HashMap<>();
         long id = Global.farmer.getId();
-//        params.put("id", id + "");
 
         RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO + id, params);
         httpHandler.getFarmerInfo(requestBean, new HttpCallback<Farmer>() {

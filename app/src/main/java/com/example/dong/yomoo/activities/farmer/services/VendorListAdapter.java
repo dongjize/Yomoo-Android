@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 销售商列表adapter
  */
-public class VendorListAdapter extends BaseLoadMoreRecyclerAdapter<String, VendorListAdapter.VendorListViewHolder> {
+public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.VendorListViewHolder> {
 
     private Context context;
     private List<User> vendorList;
@@ -29,13 +29,13 @@ public class VendorListAdapter extends BaseLoadMoreRecyclerAdapter<String, Vendo
     }
 
     @Override
-    public VendorListViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
+    public VendorListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.vendor_list_item, null);
         return new VendorListViewHolder(view);
     }
 
     @Override
-    public void onBindItemViewHolder(VendorListViewHolder holder, int position) {
+    public void onBindViewHolder(VendorListViewHolder holder, int position) {
         final User user = vendorList.get(position);
         holder.tvName.setText(user.getName());
         holder.tvIntro.setText(user.getIntro());
@@ -49,6 +49,14 @@ public class VendorListAdapter extends BaseLoadMoreRecyclerAdapter<String, Vendo
                 context.startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public int getItemCount() {
+        if (vendorList != null) {
+            return vendorList.size();
+        }
+        return 0;
     }
 
     class VendorListViewHolder extends RecyclerView.ViewHolder {

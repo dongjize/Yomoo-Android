@@ -24,7 +24,7 @@ public class HttpAPI {
     public static final String VENDOR_LIST = DOMAIN + "users/";
 
     //获取某个经销商的饲料列表
-    public static final String FODDER_LIST = DOMAIN + "fodder/";
+    public static final String FODDER_Of_VENDOR_LIST = DOMAIN + "fodder_of_vendor/";
 
 
     public static final String POST_LIVESTOCK_DEMAND = DOMAIN + "post_livestock_demand/";
