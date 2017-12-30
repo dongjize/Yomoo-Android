@@ -75,7 +75,7 @@ public class LivestockDemandPublishActivity extends BaseActivity implements View
         Map<String, Object> params = new HashMap<>();
         params.put("title", title);
         params.put("content", content);
-        params.put("publisher", Global.user.getId());
+        params.put("publisher", Global.user.getId() + "");
         RequestBean requestBean = new RequestBean(TAG, HttpAPI.POST_LIVESTOCK_DEMAND, params);
         httpHandler.postLivestockDemand(requestBean, new HttpCallback<LivestockDemand>() {
             @Override

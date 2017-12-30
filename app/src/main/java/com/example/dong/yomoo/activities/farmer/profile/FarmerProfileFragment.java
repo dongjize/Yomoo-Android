@@ -44,7 +44,7 @@ public class FarmerProfileFragment extends BaseFragment {
         CommonItemModel[] models = {
                 new CommonItemModel("账务信息", FarmerAccountInfoActivity.class),
                 new CommonItemModel("个人信息", FarmerInfoActivity.class),
-                new CommonItemModel("发布需求", LivestockDemandPublishActivity.class)
+                new CommonItemModel("发布需求", BreedingInfoDemandPublishActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 
