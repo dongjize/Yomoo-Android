@@ -72,34 +72,38 @@
             android:label="首页"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.profile.FarmerAccountInfoActivity"
+            android:name=".activities.farmer.profile.tab1.FarmerAccountInfoActivity"
             android:label="账户信息"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.profile.FarmerInfoActivity"
+            android:name=".activities.farmer.profile.tab2.FarmerInfoActivity"
             android:label="个人信息"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.profile.BreedingInfoDemandPublishActivity"
+            android:name=".activities.farmer.profile.tab3.BreedingInfoDemandPublishActivity"
             android:label="发布需求"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.services.LivestockDemandListActivity"
+            android:name=".activities.farmer.services.tab1.LivestockDemandListActivity"
             android:label="牲畜需求"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.services.VendorListActivity"
+            android:name=".activities.farmer.services.tab2.VendorListActivity"
             android:label="饲料销售商"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.services.BreedingInfoListActivity"
+            android:name=".activities.farmer.services.tab3.BreedingInfoListActivity"
             android:label="养殖技术"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.services.BreedingInfoDetailActivity"
+            android:name=".activities.farmer.services.tab3.BreedingInfoDetailActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.services.VendorInfoDetailActivity"
+            android:name=".activities.farmer.services.tab2.VendorInfoDetailActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.tab2.FarmerOrderFodderActivity"
+            android:label="商品"
             android:launchMode="singleTask" />
 
         <!--vendor home-->
@@ -147,7 +151,11 @@
             android:name=".activities.farmer.services.FodderStockDetailActivity"
             android:label="饲料详情"
             android:launchMode="singleTask" />
-        <activity android:name=".activities.farmer.LivestockDemandDetailActivity" />
+        <activity
+            android:name=".activities.farmer.LivestockDemandDetailActivity"
+            android:label="需求"
+            android:launchMode="singleTask" />
+
 
     </application>
 

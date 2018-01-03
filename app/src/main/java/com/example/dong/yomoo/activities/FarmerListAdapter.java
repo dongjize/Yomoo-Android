@@ -10,12 +10,11 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.entities.users.Farmer;
-import com.example.dong.yomoo.entities.users.User;
 
 import java.util.List;
 
 /**
- * Created by dong on 03/01/2018.
+ * Created by I346748 on 1/3/2018.
  */
 public class FarmerListAdapter extends BaseAdapter {
 

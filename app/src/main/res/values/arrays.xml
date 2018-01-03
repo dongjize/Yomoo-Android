@@ -6,4 +6,15 @@
         <item>肉类加工商</item>
         <item>扶贫工作者</item>
     </string-array>
+
+    <string-array name="order_types">
+        <item>现付</item>
+        <item>欠款</item>
+    </string-array>
+
+    <string-array name="fodder_spec_types">
+        <item>5kg</item>
+        <item>10kg</item>
+        <item>20kg</item>
+    </string-array>
 </resources>

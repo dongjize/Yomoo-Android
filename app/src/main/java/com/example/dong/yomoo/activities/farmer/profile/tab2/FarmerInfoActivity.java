@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.profile;
+package com.example.dong.yomoo.activities.farmer.profile.tab2;
 
 import android.os.Bundle;
 import android.widget.TextView;

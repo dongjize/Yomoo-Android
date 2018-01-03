@@ -12,12 +12,15 @@ import java.util.List;
 public class Order extends BaseModel {
 
     private long id;
+    @SerializedName("order_entries")
     private List<OrderEntry> orderEntries; // 一对多
     private Farmer buyer; // 养殖户
     private User vendor; // 销售商
     @SerializedName("order_type")
     private String orderType;
     private String tips;
+    @SerializedName("total_price")
+    private String totalPrice;
 
     public static final String OWED_ORDER = "owed";
     public static final String PAYED_ORDER = "payed";
@@ -68,5 +71,13 @@ public class Order extends BaseModel {
 
     public void setTips(String tips) {
         this.tips = tips;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

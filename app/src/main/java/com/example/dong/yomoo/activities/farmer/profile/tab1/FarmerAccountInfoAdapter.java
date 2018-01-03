@@ -1,12 +1,10 @@
-package com.example.dong.yomoo.activities.vendor;
+package com.example.dong.yomoo.activities.farmer.profile.tab1;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
@@ -15,16 +13,15 @@ import com.example.dong.yomoo.entities.Order;
 import java.util.List;
 
 /**
- * Created by dong on 02/01/2018.
+ * Created by I346748 on 1/3/2018.
  */
 
-public class HistoryOrderListAdapter extends BaseAdapter {
-
+public class FarmerAccountInfoAdapter extends BaseAdapter {
     private Context context;
     private List<Order> orderList;
     private LayoutInflater mInflater;
 
-    public HistoryOrderListAdapter(Context context, List<Order> orderList) {
+    public FarmerAccountInfoAdapter(Context context, List<Order> orderList) {
         this.context = context;
         this.orderList = orderList;
         mInflater = LayoutInflater.from(context);
@@ -61,7 +58,7 @@ public class HistoryOrderListAdapter extends BaseAdapter {
             holder.tvOrderNumber = convertView.findViewById(R.id.tv_order_number);
             holder.tvOrderDate = convertView.findViewById(R.id.tv_created_date);
             holder.tvTotalPrice = convertView.findViewById(R.id.tv_total_price);
-            holder.tvBuyer = convertView.findViewById(R.id.tv_fodder_buyer);
+            holder.tvVendor = convertView.findViewById(R.id.tv_fodder_vendor);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -69,11 +66,11 @@ public class HistoryOrderListAdapter extends BaseAdapter {
         holder.tvOrderNumber.setText(String.format("%d", order.getId()));
         holder.tvOrderDate.setText(order.getCreatedAt());
         holder.tvTotalPrice.setText(String.format("%s", order.getTotalPrice()));
-        holder.tvBuyer.setText(order.getBuyer().getName());
+        holder.tvVendor.setText(order.getVendor().getName());
         return convertView;
     }
 
     private class ViewHolder {
-        private TextView tvOrderNumber, tvOrderDate, tvTotalPrice, tvBuyer;
+        private TextView tvOrderNumber, tvOrderDate, tvTotalPrice, tvVendor;
     }
 }

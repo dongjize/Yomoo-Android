@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.services;
+package com.example.dong.yomoo.activities.farmer.services.tab2;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.entities.users.User;
-import com.example.dong.yomoo.utils.BaseLoadMoreRecyclerAdapter;
 
 import java.util.List;
 

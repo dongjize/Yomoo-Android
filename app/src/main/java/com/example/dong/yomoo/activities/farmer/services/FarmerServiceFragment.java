@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseFragment;
+import com.example.dong.yomoo.activities.farmer.services.tab1.LivestockDemandListActivity;
+import com.example.dong.yomoo.activities.farmer.services.tab2.VendorListActivity;
+import com.example.dong.yomoo.activities.farmer.services.tab3.BreedingInfoListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

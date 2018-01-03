@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.profile;
+package com.example.dong.yomoo.activities.farmer.profile.tab3;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,9 +8,7 @@ import android.widget.EditText;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.activities.butcher.LivestockDemandPublishActivity;
 import com.example.dong.yomoo.entities.BreedingInfoDemand;
-import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
