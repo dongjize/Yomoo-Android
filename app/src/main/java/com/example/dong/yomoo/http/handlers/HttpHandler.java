@@ -9,6 +9,8 @@ import com.example.dong.yomoo.entities.BreedingInfoDemand;
 import com.example.dong.yomoo.entities.FodderOfVendor;
 import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.entities.Purchase;
+import com.example.dong.yomoo.entities.PurchaseEntry;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
@@ -406,7 +408,171 @@ public class HttpHandler extends BaseHttpHandler {
         });
     }
 
-    public void getHistoryOrderList(RequestBean requestBean,  HttpCallback<Order> callback) {
+    public void getHistoryOrderList(RequestBean requestBean, final HttpCallback<List<Order>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<Order> orderList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<Order>>() {
+                                }.getType());
+                        BaseResult<List<Order>> result = new BaseResult<>();
+                        result.setData(orderList);
+                        result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
 
+    public void getFodderDetail(RequestBean requestBean, final HttpCallback<FodderOfVendor> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        BaseResult<FodderOfVendor> result = new BaseResult<>();
+                        FodderOfVendor fv = gson.fromJson(data.getJSONObject("fv").toString(), new TypeToken<FodderOfVendor>() {
+                        }.getType());
+                        result.setData(fv);
+                        result.setValue("");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void postOrder(RequestBean requestBean, final HttpCallback<Order> callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        Order order = gson.fromJson(data.getJSONObject("order").toString(),
+                                new TypeToken<Order>() {
+                                }.getType());
+                        BaseResult<Order> result = new BaseResult<>();
+                        result.setData(order);
+                        result.setValue("");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void postPurchase(RequestBean requestBean, final HttpCallback<Purchase> callback) {
+        volleyUtils.httpPostString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        Purchase purchase = gson.fromJson(data.getJSONObject("purchase").toString(),
+                                new TypeToken<Purchase>() {
+                                }.getType());
+                        BaseResult<Purchase> result = new BaseResult<>();
+                        result.setData(purchase);
+                        result.setValue("");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void getFarmerList(RequestBean requestBean, final HttpCallback<List<Farmer>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<Farmer> farmerList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<Farmer>>() {
+                                }.getType());
+                        BaseResult<List<Farmer>> result = new BaseResult<>();
+                        result.setData(farmerList);
+                        result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
     }
 }

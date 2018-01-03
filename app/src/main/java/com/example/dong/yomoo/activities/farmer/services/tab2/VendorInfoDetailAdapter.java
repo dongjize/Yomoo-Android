@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.services;
+package com.example.dong.yomoo.activities.farmer.services.tab2;
 
 import android.content.Context;
 import android.view.LayoutInflater;

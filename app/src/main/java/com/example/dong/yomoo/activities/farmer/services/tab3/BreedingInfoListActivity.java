@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.services;
+package com.example.dong.yomoo.activities.farmer.services.tab3;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,22 +8,23 @@ import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
 
 /**
- * 肉品加工商发布的牲畜需求列表
+ * 饲料销售商发布的养殖技术列表
  */
 
-public class LivestockDemandListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class BreedingInfoListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.livestock_demand_list_activity);
+        setContentView(R.layout.breeding_info_list_activity);
 
         recyclerView = findViewById(R.id.recycler_view);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
+
 
     }
 

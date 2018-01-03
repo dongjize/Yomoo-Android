@@ -17,8 +17,12 @@ public class HttpAPI {
     public static final String COMPLETE_INFO = DOMAIN + "complete_info/";
     public static final String LOGOUT = DOMAIN + "logout/";
 
+    public static final String FARMER_LIST = DOMAIN + "farmers/";
+
     //获取某个养殖户信息
     public static final String FARMER_INFO = DOMAIN + "farmer/";
+
+    public static final String VENDOR_INFO = DOMAIN + "vendor/";
 
     //获取用户列表
     public static final String VENDOR_LIST = DOMAIN + "users/";
@@ -33,7 +37,14 @@ public class HttpAPI {
 
     public static final String POST_BREEDING_INFO_DEMAND = DOMAIN + "post_breeding_info_demand/";
 
-    public static final String GET_HISTORY_ORDER_LIST = DOMAIN + "history_order_list/";
+    public static final String VENDOR_GET_HISTORY_ORDER_LIST = "orders/";
 
+    public static final String FARMER_GET_HISTORY_ORDER_LIST = "orders/";
+
+    public static final String GET_FODDER_DETAIL = DOMAIN + "fodder_of_vendor/";
+
+    public static final String FARMER_POST_ORDER = DOMAIN + "post_order/";
+
+    public static final String VENDOR_POST_PURCHASE = DOMAIN + "add_purchase/";
 
 }

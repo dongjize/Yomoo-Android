@@ -1,18 +1,17 @@
-package com.example.dong.yomoo.activities;
+package com.example.dong.yomoo.activities.farmer.profile.tab1;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.entities.users.Farmer;
+import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
+import com.example.dong.yomoo.utils.Global;
 import com.example.dong.yomoo.utils.L;
 
 import java.util.ArrayList;
@@ -21,28 +20,31 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 养殖户信息列表页
+ * Created by dong on 22/12/2017.
  */
-public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private static final String TAG = FarmerListActivity.class.getSimpleName();
+    private static final String TAG = FarmerAccountInfoActivity.class.getSimpleName();
+    private List<Order> orderList;
+    private ListView orderListView;
+    private FarmerAccountInfoAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private List<Farmer> farmerList;
-    private ListView listView;
-    private FarmerListAdapter mAdapter;
     private String offset = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.farmer_info_list_activity);
+        setContentView(R.layout.farmer_account_info_activity);
 
         initToolbar();
 
+        orderList = new ArrayList<>();
+        orderListView = findViewById(R.id.list_view);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
-        listView = findViewById(R.id.list_view);
-        farmerList = new ArrayList<>();
+
+        requestFarmerAccountInfo();
+
     }
 
     @Override
@@ -54,17 +56,25 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         }
     }
 
-    private void getFarmerList() {
+    @Override
+    public void onRefresh() {
+        offset = "0";
+        requestFarmerAccountInfo();
+    }
+
+    private void requestFarmerAccountInfo() {
         Map<String, Object> params = new HashMap<>();
-        params.put("offset", TextUtils.isEmpty(offset) ? "0" : offset);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_LIST, params);
-        httpHandler.getFarmerList(requestBean, new HttpCallback<List<Farmer>>() {
+        long id = Global.user.getId();
+        params.put("offset", offset);
+
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO + id + "/"+HttpAPI.FARMER_GET_HISTORY_ORDER_LIST, params);
+        httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
-            public void onSuccess(BaseResult<List<Farmer>> result) {
-                List<Farmer> farmerList = result.getData();
+            public void onSuccess(BaseResult<List<Order>> result) {
+                orderList = result.getData();
                 if (mAdapter == null) {
-                    mAdapter = new FarmerListAdapter(context, farmerList);
-                    listView.setAdapter(mAdapter);
+                    mAdapter = new FarmerAccountInfoAdapter(context, orderList);
+                    orderListView.setAdapter(mAdapter);
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }
@@ -76,11 +86,5 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
                 L.d(errMsg);
             }
         });
-    }
-
-    @Override
-    public void onRefresh() {
-        offset = "0";
-        getFarmerList();
     }
 }

@@ -55,19 +55,20 @@ public class HistoryOrderListActivity extends BaseActivity implements SwipeRefre
 
     @Override
     public void onRefresh() {
-
+        offset = "0";
+        getHistoryOrderList();
     }
 
     private void getHistoryOrderList() {
         Map<String, Object> params = new HashMap<>();
         long id = Global.user.getId();
-        params.put("offset", Global.OFFSET);
+        params.put("offset", offset);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.GET_HISTORY_ORDER_LIST + id, params);
-        httpHandler.getHistoryOrderList(requestBean, new HttpCallback<Order>() {
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.VENDOR_INFO + id + "/" + HttpAPI.VENDOR_GET_HISTORY_ORDER_LIST, params);
+        httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
-            public void onSuccess(BaseResult<Order> result) {
-                orderList = (List<Order>) result.getData();
+            public void onSuccess(BaseResult<List<Order>> result) {
+                orderList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new HistoryOrderListAdapter(context, orderList);
                     orderListView.setAdapter(mAdapter);

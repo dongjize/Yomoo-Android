@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseFragment;
-import com.example.dong.yomoo.activities.butcher.LivestockDemandPublishActivity;
+import com.example.dong.yomoo.activities.farmer.profile.tab1.FarmerAccountInfoActivity;
+import com.example.dong.yomoo.activities.farmer.profile.tab2.FarmerInfoActivity;
+import com.example.dong.yomoo.activities.farmer.profile.tab3.BreedingInfoDemandPublishActivity;
 import com.example.dong.yomoo.utils.CommonItemModel;
 
 import java.util.ArrayList;

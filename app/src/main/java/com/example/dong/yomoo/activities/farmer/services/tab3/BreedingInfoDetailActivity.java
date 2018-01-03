@@ -1,13 +1,12 @@
-package com.example.dong.yomoo.activities.farmer;
+package com.example.dong.yomoo.activities.farmer.services.tab3;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
 
 /**
- * Created by dong on 22/12/2017.
+ * Created by dong on 25/12/2017.
  */
-
-public class FarmerOrderFodderActivity extends BaseActivity {
+public class BreedingInfoDetailActivity extends BaseActivity {
     @Override
     protected void initToolbar() {
         toolbar = findViewById(R.id.toolbar);

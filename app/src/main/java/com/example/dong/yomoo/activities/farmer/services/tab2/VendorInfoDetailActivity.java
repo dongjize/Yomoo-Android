@@ -1,7 +1,11 @@
-package com.example.dong.yomoo.activities.farmer.services;
+package com.example.dong.yomoo.activities.farmer.services.tab2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
@@ -21,7 +25,7 @@ import java.util.Map;
 /**
  * 饲料销售商详情页面，即所销售的饲料列表页
  */
-public class VendorInfoDetailActivity extends BaseActivity {
+public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = VendorInfoDetailActivity.class.getSimpleName();
 
 //    private RecyclerView recyclerView;
@@ -55,8 +59,6 @@ public class VendorInfoDetailActivity extends BaseActivity {
 //        recyclerView = findViewById(R.id.recycler_view);
         listView = findViewById(R.id.list_view);
         fvList = new ArrayList<>();
-        mAdapter = new VendorInfoDetailAdapter(context, fvList);
-        listView.setAdapter(mAdapter);
 
         getVendorInfoDetail();
 
@@ -75,6 +77,17 @@ public class VendorInfoDetailActivity extends BaseActivity {
                 if (mAdapter == null) {
                     mAdapter = new VendorInfoDetailAdapter(context, fvList);
                     listView.setAdapter(mAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            FodderOfVendor fv = fvList.get(position);
+                            Intent intent = new Intent(context, FarmerOrderFodderActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("id", fv.getId());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }
@@ -95,5 +108,11 @@ public class VendorInfoDetailActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        offset = "0";
+        getVendorInfoDetail();
     }
 }
