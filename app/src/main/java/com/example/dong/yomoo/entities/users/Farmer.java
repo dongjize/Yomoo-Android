@@ -30,6 +30,10 @@ public class Farmer extends User {
         setIntro(user.getIntro());
     }
 
+    public String getAddress() {
+        return getVillage() + " " + getGroup() + " " + getStreetNum();
+    }
+
     public String getPhone() {
         return phone;
     }
