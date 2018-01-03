@@ -45,7 +45,11 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
         submitBtn.setOnClickListener(this);
         farmerInfoLayout = findViewById(R.id.farmer_info_layout);
 
-//        isFarmer = Global.user.getType().equals(User.FARMER);
+        if (Global.user == null || Global.user.getType() == null) {
+            return;
+        }
+
+        isFarmer = Global.user.getType().equals(User.FARMER);
 
         if (isFarmer) {
             farmerInfoLayout.setVisibility(View.VISIBLE);

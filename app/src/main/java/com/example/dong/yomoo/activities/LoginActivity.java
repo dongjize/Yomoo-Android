@@ -120,22 +120,26 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Intent toHome = new Intent();
                 User user = result.getData();
                 Global.user = user;
-                switch (user.getType()) {
-                    case User.FARMER:
-                        Global.farmer = (Farmer) Global.user;
-                        toHome.setClass(context, FarmerHomeActivity.class);
-                        break;
-                    case User.VENDOR:
-                        toHome.setClass(context, VendorHomeActivity.class);
-                        break;
-                    case User.BUTCHER:
-                        toHome.setClass(context, ButcherHomeActivity.class);
-                        break;
-                    case User.SUPPORTER:
-                        toHome.setClass(context, SupporterHomeActivity.class);
-                        break;
-                    default:
-                        break;
+                if (user.getName() == null) {
+                    toHome.setClass(context, CompleteInfoActivity.class);
+                } else {
+                    switch (user.getType()) {
+                        case User.FARMER:
+                            Global.farmer = (Farmer) Global.user;
+                            toHome.setClass(context, FarmerHomeActivity.class);
+                            break;
+                        case User.VENDOR:
+                            toHome.setClass(context, VendorHomeActivity.class);
+                            break;
+                        case User.BUTCHER:
+                            toHome.setClass(context, ButcherHomeActivity.class);
+                            break;
+                        case User.SUPPORTER:
+                            toHome.setClass(context, SupporterHomeActivity.class);
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 startActivity(toHome);
                 finish();

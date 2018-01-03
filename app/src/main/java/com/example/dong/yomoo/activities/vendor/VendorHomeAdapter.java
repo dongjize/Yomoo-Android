@@ -27,7 +27,7 @@ public class VendorHomeAdapter extends RecyclerView.Adapter<VendorHomeAdapter.Ve
 
     @Override
     public VendorHomeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.vendor_home_activity_item, null);
+        View view = View.inflate(context, R.layout.common_recycler_grid_item, null);
         return new VendorHomeViewHolder(view);
     }
 

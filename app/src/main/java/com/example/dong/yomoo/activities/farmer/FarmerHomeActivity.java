@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.BaseHomeActivity;
 import com.example.dong.yomoo.activities.LoginActivity;
 import com.example.dong.yomoo.activities.farmer.profile.FarmerProfileFragment;
 import com.example.dong.yomoo.activities.farmer.services.FarmerServiceFragment;
@@ -39,23 +40,18 @@ import java.util.Map;
  * tab1："我的"页面 FarmerProfileFragment
  * tab2："服务"页面 FarmerServiceFragment
  */
-public class FarmerHomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class FarmerHomeActivity extends BaseHomeActivity {
     private static final String TAG = FarmerHomeActivity.class.getSimpleName();
-    private MyApplication application;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private List<Fragment> fragments;
     private Fragment profileFragment, servicesFragment;
     private FarmerHomeTabAdapter mAdapter;
 
-    private MenuItem logoutBtn;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_home_activity);
-        application = MyApplication.getInstance();
 
         initToolbar();
 
@@ -85,74 +81,4 @@ public class FarmerHomeActivity extends BaseActivity implements NavigationView.O
         setSupportActionBar(toolbar);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (!Global.isExit) {
-            Global.isExit = true;
-            showToast("再按一次退出程序");
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Global.isExit = false;
-                }
-            }, 2000);
-        } else {
-            application.exitApplication();
-        }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_farmer_home, menu);
-        toolbar.getMenu().findItem(R.id.action_logout);
-        logoutBtn = toolbar.getMenu().findItem(R.id.action_logout);
-        return true;
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_logout:
-                new AlertDialog.Builder(context).setTitle("确认退出登录？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        logout();
-                    }
-                });
-                break;
-            default:
-                break;
-        }
-        return false;
-    }
-
-    private void logout() {
-        Map<String, Object> params = new HashMap<>();
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.LOGOUT + Global.user.getId(), params);
-        httpHandler.userLogout(requestBean, new HttpCallback() {
-            @Override
-            public void onSuccess(BaseResult result) {
-                Global.farmer = null;
-                Global.user = null;
-                Intent intent = new Intent(context, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-
-            @Override
-            public void onFailure(String errMsg) {
-                showToast(errMsg);
-                L.d(errMsg);
-            }
-        });
-    }
 }

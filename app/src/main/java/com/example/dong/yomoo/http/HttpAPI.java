@@ -33,5 +33,7 @@ public class HttpAPI {
 
     public static final String POST_BREEDING_INFO_DEMAND = DOMAIN + "post_breeding_info_demand/";
 
+    public static final String GET_HISTORY_ORDER_LIST = DOMAIN + "history_order_list/";
+
 
 }

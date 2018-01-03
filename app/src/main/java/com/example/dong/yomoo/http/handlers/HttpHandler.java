@@ -8,6 +8,7 @@ import com.example.dong.yomoo.entities.BreedingInfo;
 import com.example.dong.yomoo.entities.BreedingInfoDemand;
 import com.example.dong.yomoo.entities.FodderOfVendor;
 import com.example.dong.yomoo.entities.LivestockDemand;
+import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
@@ -403,5 +404,9 @@ public class HttpHandler extends BaseHttpHandler {
                 callback.onFailure(error.toString());
             }
         });
+    }
+
+    public void getHistoryOrderList(RequestBean requestBean,  HttpCallback<Order> callback) {
+
     }
 }

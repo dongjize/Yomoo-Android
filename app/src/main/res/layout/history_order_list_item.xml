@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp">
 
@@ -22,24 +22,31 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/tv_fodder_name"
+                android:id="@+id/tv_order_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="name + specification" />
+                tools:text="124567890" />
 
             <TextView
-                android:id="@+id/tv_fodder_quantity"
+                android:id="@+id/tv_created_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_fodder_name"
+                android:layout_below="@id/tv_order_number"
                 tools:text="specification" />
 
             <TextView
-                android:id="@+id/tv_sell_price"
+                android:id="@+id/tv_fodder_buyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_created_date"
+                tools:text="Tom" />
+
+            <TextView
+                android:id="@+id/tv_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

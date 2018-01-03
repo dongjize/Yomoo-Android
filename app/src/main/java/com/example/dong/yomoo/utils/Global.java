@@ -18,4 +18,7 @@ public class Global {
     public static String OBJECTNO = "";
     public static float DENSITY = 0;
 
+
+    public static final int OFFSET = 20;
+
 }

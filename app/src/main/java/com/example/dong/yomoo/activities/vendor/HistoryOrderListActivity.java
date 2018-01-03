@@ -2,24 +2,46 @@ package com.example.dong.yomoo.activities.vendor;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.http.BaseResult;
+import com.example.dong.yomoo.http.HttpAPI;
+import com.example.dong.yomoo.http.HttpCallback;
+import com.example.dong.yomoo.http.RequestBean;
+import com.example.dong.yomoo.utils.Global;
+import com.example.dong.yomoo.utils.L;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dong on 16/12/2017.
  */
-public class HistoryOrderListActivity extends BaseActivity {
+public class HistoryOrderListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private RecyclerView orderListView;
+    private static final String TAG = HistoryOrderListActivity.class.getSimpleName();
+    private ListView orderListView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private HistoryOrderListAdapter mAdapter;
+    private List<Order> orderList;
+    private String offset = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_order_list_activity);
 
+        orderListView = findViewById(R.id.list_view);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        orderList = new ArrayList<>();
+
+        getHistoryOrderList();
     }
 
     @Override
@@ -29,5 +51,36 @@ public class HistoryOrderListActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    private void getHistoryOrderList() {
+        Map<String, Object> params = new HashMap<>();
+        long id = Global.user.getId();
+        params.put("offset", Global.OFFSET);
+
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.GET_HISTORY_ORDER_LIST + id, params);
+        httpHandler.getHistoryOrderList(requestBean, new HttpCallback<Order>() {
+            @Override
+            public void onSuccess(BaseResult<Order> result) {
+                orderList = (List<Order>) result.getData();
+                if (mAdapter == null) {
+                    mAdapter = new HistoryOrderListAdapter(context, orderList);
+                    orderListView.setAdapter(mAdapter);
+                } else {
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                showToast(errMsg);
+                L.d(errMsg);
+            }
+        });
     }
 }

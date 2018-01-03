@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * 订单条目
  */
 public class OrderEntry {
+
     private long id;
     @SerializedName("fodder_vendor")
     private FodderOfVendor fodderOfVendor;
