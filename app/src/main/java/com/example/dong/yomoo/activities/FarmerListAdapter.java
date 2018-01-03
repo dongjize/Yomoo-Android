@@ -14,7 +14,7 @@ import com.example.dong.yomoo.entities.users.Farmer;
 import java.util.List;
 
 /**
- * Created by I346748 on 1/3/2018.
+ * 养殖户列表Adapter
  */
 public class FarmerListAdapter extends BaseAdapter {
 

@@ -3,8 +3,6 @@ package com.example.dong.yomoo.activities;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
@@ -63,7 +61,7 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         httpHandler.getFarmerList(requestBean, new HttpCallback<List<Farmer>>() {
             @Override
             public void onSuccess(BaseResult<List<Farmer>> result) {
-                List<Farmer> farmerList = result.getData();
+                farmerList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new FarmerListAdapter(context, farmerList);
                     listView.setAdapter(mAdapter);
