@@ -3,6 +3,7 @@ package com.example.dong.yomoo.activities.vendor;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
@@ -12,7 +13,7 @@ import com.example.dong.yomoo.activities.BaseActivity;
  */
 public class FodderStockListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private RecyclerView recyclerView;
+    private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
 
@@ -26,7 +27,7 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        recyclerView = findViewById(R.id.recycler_view);
+        listView = findViewById(R.id.list_view);
         // TODO add adapter
     }
 

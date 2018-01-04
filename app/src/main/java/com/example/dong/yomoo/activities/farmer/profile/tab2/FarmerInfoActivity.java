@@ -22,7 +22,7 @@ import java.util.Map;
 public class FarmerInfoActivity extends BaseActivity {
 
     private static final String TAG = FarmerInfoActivity.class.getSimpleName();
-    private TextView tvName, tvVillage, tvGroup, tvStreet, tvLivestock, tvExpLivestock;
+    private TextView tvName, tvVillage, tvGroup, tvStreet, tvLivestock, tvExpLivestock, tvIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class FarmerInfoActivity extends BaseActivity {
         tvStreet = findViewById(R.id.tv_street_num);
         tvLivestock = findViewById(R.id.tv_livestock);
         tvExpLivestock = findViewById(R.id.tv_exp_livestock);
+        tvIntro = findViewById(R.id.tv_intro);
 
         getFarmerInfo();
     }
@@ -65,6 +66,7 @@ public class FarmerInfoActivity extends BaseActivity {
                 tvStreet.setText(farmer.getStreetNum());
                 tvLivestock.setText(farmer.getLivestock());
                 tvExpLivestock.setText(farmer.getExpLivestock());
+                tvIntro.setText(farmer.getIntro());
             }
 
             @Override

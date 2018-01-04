@@ -542,6 +542,12 @@ public class HttpHandler extends BaseHttpHandler {
         });
     }
 
+    /**
+     * 获取已注册的养殖户列表
+     *
+     * @param requestBean
+     * @param callback
+     */
     public void getFarmerList(RequestBean requestBean, final HttpCallback<List<Farmer>> callback) {
         volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
             @Override
@@ -557,6 +563,46 @@ public class HttpHandler extends BaseHttpHandler {
                                 }.getType());
                         BaseResult<List<Farmer>> result = new BaseResult<>();
                         result.setData(farmerList);
+                        result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    /**
+     * 获取肉品加工商的牲畜需求列表
+     *
+     * @param requestBean
+     * @param callback
+     */
+    public void getLivestockDemandList(RequestBean requestBean, final HttpCallback<List<LivestockDemand>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<LivestockDemand> demandList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<LivestockDemand>>() {
+                                }.getType());
+                        BaseResult<List<LivestockDemand>> result = new BaseResult<>();
+                        result.setData(demandList);
                         result.setValue(offset + "");
                         result.setMessage(jsonObject.getString("message"));
                         result.setResultCode(jsonObject.getInt("code"));

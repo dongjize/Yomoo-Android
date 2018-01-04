@@ -3,28 +3,50 @@ package com.example.dong.yomoo.activities.farmer.services.tab1;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.farmer.profile.tab1.FarmerAccountInfoAdapter;
+import com.example.dong.yomoo.entities.LivestockDemand;
+import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.http.BaseResult;
+import com.example.dong.yomoo.http.HttpAPI;
+import com.example.dong.yomoo.http.HttpCallback;
+import com.example.dong.yomoo.http.RequestBean;
+import com.example.dong.yomoo.utils.Global;
+import com.example.dong.yomoo.utils.L;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 肉品加工商发布的牲畜需求列表
  */
-
 public class LivestockDemandListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
+    private static final String TAG = LivestockDemandListActivity.class.getSimpleName();
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
+    private ListView listView;
+    private List<LivestockDemand> livestockDemandList;
+    private LiveStockDemandAdapter mAdapter;
+    private String offset = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.livestock_demand_list_activity);
 
-        recyclerView = findViewById(R.id.recycler_view);
+        initToolbar();
+
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
+        listView = findViewById(R.id.list_view);
+        livestockDemandList = new ArrayList<>();
 
+        requestLivestockDemandList();
     }
 
     @Override
@@ -38,6 +60,32 @@ public class LivestockDemandListActivity extends BaseActivity implements SwipeRe
 
     @Override
     public void onRefresh() {
+        offset = "0";
+        requestLivestockDemandList();
+    }
 
+    private void requestLivestockDemandList() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("offset", offset);
+
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.GET_LIVESTOCK_DEMAND_LIST, params);
+        httpHandler.getLivestockDemandList(requestBean, new HttpCallback<List<LivestockDemand>>() {
+            @Override
+            public void onSuccess(BaseResult<List<LivestockDemand>> result) {
+                livestockDemandList = result.getData();
+                if (mAdapter == null) {
+                    mAdapter = new LiveStockDemandAdapter(context, livestockDemandList);
+                    listView.setAdapter(mAdapter);
+                } else {
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                showToast(errMsg);
+                L.d(errMsg);
+            }
+        });
     }
 }

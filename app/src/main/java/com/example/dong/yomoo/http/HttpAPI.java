@@ -47,4 +47,6 @@ public class HttpAPI {
 
     public static final String VENDOR_POST_PURCHASE = DOMAIN + "add_purchase/";
 
+    public static final String GET_LIVESTOCK_DEMAND_LIST = DOMAIN + "livestock_demand_list/";
+
 }

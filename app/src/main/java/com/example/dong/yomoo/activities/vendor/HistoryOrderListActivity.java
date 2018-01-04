@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by dong on 16/12/2017.
+ * 历史订单列表页
  */
 public class HistoryOrderListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
