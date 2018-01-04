@@ -15,7 +15,8 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
 
     private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
-
+    private FodderStockListAdapter mAdapter;
+    private String offset = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
         swipeRefreshLayout.setOnRefreshListener(this);
 
         listView = findViewById(R.id.list_view);
-        // TODO add adapter
+
+        getFodderStockList();
     }
 
     @Override
@@ -42,6 +44,11 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
 
     @Override
     public void onRefresh() {
+        offset = "0";
+        getFodderStockList();
+    }
+
+    private void getFodderStockList() {
 
     }
 }

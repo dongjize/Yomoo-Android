@@ -23,7 +23,6 @@ public class FodderStockListAdapter extends BaseListAdapter<FodderOfVendor> {
         super(context, list);
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         return null;
