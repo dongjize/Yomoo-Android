@@ -155,6 +155,7 @@
             android:name=".activities.farmer.LivestockDemandDetailActivity"
             android:label="需求"
             android:launchMode="singleTask" />
+        <activity android:name=".activities.vendor.BreedingInfoPublishActivity" />
 
 
     </application>

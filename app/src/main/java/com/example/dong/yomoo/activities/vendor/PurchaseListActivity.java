@@ -8,6 +8,7 @@ import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
 import com.example.dong.yomoo.entities.Purchase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,14 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.purchase_list_activity);
+
+        listView = findViewById(R.id.list_view);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        purchaseList = new ArrayList<>();
+
+        getPurchaseList();
     }
 
     @Override
@@ -37,6 +46,11 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
 
     @Override
     public void onRefresh() {
+        offset = "0";
+        getPurchaseList();
+    }
+
+    public void getPurchaseList() {
 
     }
 }

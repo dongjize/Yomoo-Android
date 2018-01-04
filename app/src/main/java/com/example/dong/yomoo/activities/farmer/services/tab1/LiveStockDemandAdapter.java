@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.base.BaseListAdapter;
 import com.example.dong.yomoo.entities.LivestockDemand;
 
 import java.util.List;
@@ -16,38 +17,23 @@ import java.util.List;
  * Created by I346748 on 1/4/2018.
  */
 
-public class LiveStockDemandAdapter extends BaseAdapter {
+public class LiveStockDemandAdapter extends BaseListAdapter<LivestockDemand> {
 
     private Context context;
     private List<LivestockDemand> livestockDemandList;
     private LayoutInflater mInflater;
 
-    public LiveStockDemandAdapter(Context context, List<LivestockDemand> livestockDemandList) {
-        this.context = context;
-        this.livestockDemandList = livestockDemandList;
-        mInflater = LayoutInflater.from(context);
+    public LiveStockDemandAdapter(Context context, List<LivestockDemand> list) {
+        super(context, list);
     }
 
-    @Override
-    public int getCount() {
-        if (livestockDemandList != null) {
-            return livestockDemandList.size();
-        }
-        return 0;
-    }
+//    public LiveStockDemandAdapter(Context context, List<LivestockDemand> livestockDemandList) {
+//        this.context = context;
+//        this.livestockDemandList = livestockDemandList;
+//        mInflater = LayoutInflater.from(context);
+//    }
 
-    @Override
-    public Object getItem(int position) {
-        if (livestockDemandList != null) {
-            return livestockDemandList.get(position);
-        }
-        return null;
-    }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

@@ -30,7 +30,6 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
 
     private static final String TAG = VendorListActivity.class.getSimpleName();
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
     private ListView mListView;
     private VendorListAdapter2 mAdapter;
     private String offset = "0";
@@ -63,7 +62,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
         Map<String, Object> params = new HashMap<>();
         params.put("type", User.VENDOR);
         params.put("offset", TextUtils.isEmpty(offset) ? "0" : offset);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.VENDOR_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.USER_LIST, params);
         httpHandler.getUserList(requestBean, new HttpCallback<List<User>>() {
 
             @Override
@@ -71,7 +70,6 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
                 offset = result.getValue();
                 vendorList = result.getData();
                 if (vendorList != null) {
-//                    mAdapter.notifyDataSetChanged();
                     if (mAdapter == null) {
                         mAdapter = new VendorListAdapter2(context, vendorList);
                         mListView.setAdapter(mAdapter);
