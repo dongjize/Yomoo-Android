@@ -10,7 +10,6 @@ import com.example.dong.yomoo.entities.FodderOfVendor;
 import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.entities.Purchase;
-import com.example.dong.yomoo.entities.PurchaseEntry;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
@@ -321,6 +320,46 @@ public class HttpHandler extends BaseHttpHandler {
     }
 
     /**
+     * 获取养殖技术列表（养殖户）
+     *
+     * @param requestBean
+     * @param callback
+     */
+    public void getBreedingInfoList(RequestBean requestBean, final HttpCallback<List<BreedingInfo>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<BreedingInfo> breedingInfoList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<BreedingInfo>>() {
+                                }.getType());
+                        BaseResult<List<BreedingInfo>> result = new BaseResult<>();
+                        result.setData(breedingInfoList);
+                        result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    /**
      * 发布牲畜需求信息（肉品加工商）
      *
      * @param requestBean
@@ -524,6 +563,40 @@ public class HttpHandler extends BaseHttpHandler {
                         BaseResult<Purchase> result = new BaseResult<>();
                         result.setData(purchase);
                         result.setValue("");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void getPurchaseList(RequestBean requestBean, final HttpCallback<List<Purchase>> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        int offset = data.getInt("offset");
+                        List<Purchase> purchaseList = gson.fromJson(data.getJSONArray("list").toString(),
+                                new TypeToken<List<Purchase>>() {
+                                }.getType());
+                        BaseResult<List<Purchase>> result = new BaseResult<>();
+                        result.setData(purchaseList);
+                        result.setValue(offset + "");
                         result.setMessage(jsonObject.getString("message"));
                         result.setResultCode(jsonObject.getInt("code"));
                         callback.onSuccess(result);

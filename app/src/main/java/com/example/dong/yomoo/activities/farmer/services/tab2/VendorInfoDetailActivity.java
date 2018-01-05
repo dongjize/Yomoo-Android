@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 养殖户账号下的：
  * 饲料销售商详情页面，即所销售的饲料列表页
  */
 public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {

@@ -1,7 +1,10 @@
 package com.example.dong.yomoo.activities.vendor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
@@ -20,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 饲料销售商：
  * 历史订单列表页
  */
 public class HistoryOrderListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
@@ -72,6 +76,16 @@ public class HistoryOrderListActivity extends BaseActivity implements SwipeRefre
                 if (mAdapter == null) {
                     mAdapter = new HistoryOrderListAdapter(context, orderList);
                     orderListView.setAdapter(mAdapter);
+                    orderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(context, OrderEntryDetailActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("order_id", orderList.get(position).getId());
+                            intent.putExtras(bundle);
+                            context.startActivity(intent);
+                        }
+                    });
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }

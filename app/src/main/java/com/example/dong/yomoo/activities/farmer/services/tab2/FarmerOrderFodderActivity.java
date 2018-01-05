@@ -49,11 +49,11 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
             return;
         }
         Bundle bundle = getIntent().getExtras();
-        if (bundle.getLong("id", -1) == -1) {
+        if (bundle.getLong("fv_id", -1) == -1) {
             finish();
             return;
         }
-        fvId = bundle.getLong("id");
+        fvId = bundle.getLong("fv_id");
 
         etQuantity = findViewById(R.id.et_order_quantity);
         orderBtn = findViewById(R.id.btn_order);

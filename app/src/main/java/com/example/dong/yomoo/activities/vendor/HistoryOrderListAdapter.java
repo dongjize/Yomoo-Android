@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.base.BaseListAdapter;
 import com.example.dong.yomoo.entities.Order;
 
 import java.util.List;
@@ -18,42 +19,15 @@ import java.util.List;
  * Created by dong on 02/01/2018.
  */
 
-public class HistoryOrderListAdapter extends BaseAdapter {
+public class HistoryOrderListAdapter extends BaseListAdapter<Order> {
 
-    private Context context;
-    private List<Order> orderList;
-    private LayoutInflater mInflater;
-
-    public HistoryOrderListAdapter(Context context, List<Order> orderList) {
-        this.context = context;
-        this.orderList = orderList;
-        mInflater = LayoutInflater.from(context);
+    public HistoryOrderListAdapter(Context context, List<Order> list) {
+        super(context, list);
     }
 
-    @Override
-    public int getCount() {
-        if (orderList != null) {
-            return orderList.size();
-        }
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        if (orderList != null) {
-            return orderList.get(position);
-        }
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
+        @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Order order = orderList.get(position);
+        Order order = mList.get(position);
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();

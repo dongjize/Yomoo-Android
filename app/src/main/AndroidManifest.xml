@@ -152,10 +152,9 @@
             android:label="饲料详情"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.farmer.LivestockDemandDetailActivity"
+            android:name=".activities.farmer.services.tab1.LivestockDemandDetailActivity"
             android:label="需求"
             android:launchMode="singleTask" />
-
 
     </application>
 

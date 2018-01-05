@@ -1,20 +1,19 @@
 package com.example.dong.yomoo.activities.farmer.services.tab1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.activities.farmer.profile.tab1.FarmerAccountInfoAdapter;
 import com.example.dong.yomoo.entities.LivestockDemand;
-import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
-import com.example.dong.yomoo.utils.Global;
 import com.example.dong.yomoo.utils.L;
 
 import java.util.ArrayList;
@@ -76,6 +75,16 @@ public class LivestockDemandListActivity extends BaseActivity implements SwipeRe
                 if (mAdapter == null) {
                     mAdapter = new LiveStockDemandAdapter(context, livestockDemandList);
                     listView.setAdapter(mAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(context, LivestockDemandDetailActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("demand_id", livestockDemandList.get(position).getId());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }

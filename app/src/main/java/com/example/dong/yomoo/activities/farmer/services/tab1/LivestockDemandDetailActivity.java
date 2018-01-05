@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer;
+package com.example.dong.yomoo.activities.farmer.services.tab1;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
