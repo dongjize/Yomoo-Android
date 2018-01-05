@@ -40,10 +40,12 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.purchase_list_activity);
 
+        listView = findViewById(R.id.list_view);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
-        listView = findViewById(R.id.list_view);
         purchaseList = new ArrayList<>();
+
+        requestPurchaseList();
     }
 
     @Override

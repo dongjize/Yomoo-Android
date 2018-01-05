@@ -48,10 +48,15 @@ public class PurchaseInputActivity extends BaseActivity implements View.OnClickL
         spinner = findViewById(R.id.fodder_spec_spinner);
         final String[] specTypes = getResources().getStringArray(R.array.fodder_spec_types);
         fodderSpec = specTypes[0];
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 fodderSpec = specTypes[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
         submitBtn = findViewById(R.id.btn_submit);

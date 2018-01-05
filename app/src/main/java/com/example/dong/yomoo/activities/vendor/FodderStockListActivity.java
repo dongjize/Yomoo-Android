@@ -52,6 +52,7 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
         fvList = new ArrayList<>();
 
         requestFodderStockList();
+
     }
 
     @Override
