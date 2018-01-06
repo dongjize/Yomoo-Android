@@ -41,7 +41,7 @@
 
         <!--欢迎页面-->
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.common.SplashActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
@@ -53,15 +53,15 @@
 
         <!--注册登录-->
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name=".activities.common.RegisterActivity"
             android:label="注册"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.CompleteInfoActivity"
+            android:name=".activities.common.CompleteInfoActivity"
             android:label="完善资料"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.common.LoginActivity"
             android:label="登录"
             android:launchMode="singleTask" />
 
@@ -131,6 +131,10 @@
             android:name=".activities.vendor.PurchaseListActivity"
             android:label="进货列表"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.vendor.BreedingInfoPublishActivity"
+            android:label="发布养殖技术"
+            android:launchMode="singleTask" />
 
         <!--butcher home-->
         <activity
@@ -155,7 +159,6 @@
             android:name=".activities.farmer.services.tab1.LivestockDemandDetailActivity"
             android:label="需求"
             android:launchMode="singleTask" />
-        <activity android:name=".activities.vendor.BreedingInfoPublishActivity" />
 
     </application>
 

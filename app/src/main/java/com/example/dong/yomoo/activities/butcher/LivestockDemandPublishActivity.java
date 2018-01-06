@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.LivestockDemand;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;

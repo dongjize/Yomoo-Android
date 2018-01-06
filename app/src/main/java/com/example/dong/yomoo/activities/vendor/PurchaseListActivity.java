@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.Purchase;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -78,6 +78,7 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //TODO
 //                            Purchase purchase = purchaseList.get(position);
 //                            Intent intent = new Intent(context, PurchaseDetailActivity.class);
 //                            Bundle bundle = new Bundle();

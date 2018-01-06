@@ -1,7 +1,7 @@
 package com.example.dong.yomoo.activities.farmer;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 
 /**
  * Created by dong on 17/12/2017.

@@ -5,7 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 
 /**
  * 牲畜需求详情页

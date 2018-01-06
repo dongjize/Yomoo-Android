@@ -5,7 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -67,7 +67,7 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
         long id = Global.user.getId();
         params.put("offset", offset);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO + id + "/"+HttpAPI.FARMER_GET_HISTORY_ORDER_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO + id + "/" + HttpAPI.FARMER_GET_HISTORY_ORDER_LIST, params);
         httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
             public void onSuccess(BaseResult<List<Order>> result) {

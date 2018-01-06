@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseFragment;
+import com.example.dong.yomoo.activities.common.BaseFragment;
+import com.example.dong.yomoo.activities.common.HomeGridAdapter;
 import com.example.dong.yomoo.activities.farmer.services.tab1.LivestockDemandListActivity;
 import com.example.dong.yomoo.activities.farmer.services.tab2.VendorListActivity;
 import com.example.dong.yomoo.activities.farmer.services.tab3.BreedingInfoListActivity;
+import com.example.dong.yomoo.utils.CommonItemModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,8 +30,8 @@ import java.util.List;
 public class FarmerServiceFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
-    private List<FarmerServiceModel> modelList;
-    private FarmerServiceAdapter adapter;
+    private List<CommonItemModel> modelList;
+    private HomeGridAdapter adapter;
 
     @Nullable
     @Override
@@ -42,15 +44,15 @@ public class FarmerServiceFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         modelList = new ArrayList<>();
-        FarmerServiceModel[] models = {
-                new FarmerServiceModel("牲畜需求", LivestockDemandListActivity.class),
-                new FarmerServiceModel("饲料销售商", VendorListActivity.class),
-                new FarmerServiceModel("养殖技术", BreedingInfoListActivity.class)
+        CommonItemModel[] models = {
+                new CommonItemModel("牲畜需求", LivestockDemandListActivity.class),
+                new CommonItemModel("饲料销售商", VendorListActivity.class),
+                new CommonItemModel("养殖技术", BreedingInfoListActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 
         recyclerView = contentView.findViewById(R.id.recycler_view);
-        adapter = new FarmerServiceAdapter(context, modelList);
+        adapter = new HomeGridAdapter(context, modelList);
         RecyclerView.LayoutManager lm = new GridLayoutManager(context, 2);
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);

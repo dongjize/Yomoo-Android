@@ -2,7 +2,7 @@ package com.example.dong.yomoo.activities.farmer.services;
 
 import android.os.Bundle;
 
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 
 /**
  * Created by dong on 27/12/2017.

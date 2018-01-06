@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseFragment;
+import com.example.dong.yomoo.activities.common.BaseFragment;
+import com.example.dong.yomoo.activities.common.HomeGridAdapter;
 import com.example.dong.yomoo.activities.farmer.profile.tab1.FarmerAccountInfoActivity;
 import com.example.dong.yomoo.activities.farmer.profile.tab2.FarmerInfoActivity;
 import com.example.dong.yomoo.activities.farmer.profile.tab3.BreedingInfoDemandPublishActivity;
@@ -30,7 +31,7 @@ import java.util.List;
 public class FarmerProfileFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private List<CommonItemModel> modelList;
-    private FarmerProfileAdapter adapter;
+    private HomeGridAdapter adapter;
 
     @Nullable
     @Override
@@ -51,7 +52,7 @@ public class FarmerProfileFragment extends BaseFragment {
         };
         modelList.addAll(Arrays.asList(models));
         recyclerView = contentView.findViewById(R.id.recycler_view);
-        adapter = new FarmerProfileAdapter(context, modelList);
+        adapter = new HomeGridAdapter(context, modelList);
         RecyclerView.LayoutManager lm = new GridLayoutManager(context, 2);
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);

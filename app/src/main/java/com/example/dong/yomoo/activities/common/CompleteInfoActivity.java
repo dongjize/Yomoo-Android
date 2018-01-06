@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities;
+package com.example.dong.yomoo.activities.common;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.FarmerListActivity;
 import com.example.dong.yomoo.activities.farmer.FarmerHomeActivity;
 import com.example.dong.yomoo.activities.vendor.VendorHomeActivity;
 import com.example.dong.yomoo.entities.users.Farmer;

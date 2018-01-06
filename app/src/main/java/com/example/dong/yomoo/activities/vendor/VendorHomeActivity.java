@@ -1,18 +1,11 @@
 package com.example.dong.yomoo.activities.vendor;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
 
-import com.example.dong.yomoo.activities.BaseActivity;
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseHomeActivity;
-import com.example.dong.yomoo.activities.SplashActivity;
+import com.example.dong.yomoo.activities.common.BaseHomeActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

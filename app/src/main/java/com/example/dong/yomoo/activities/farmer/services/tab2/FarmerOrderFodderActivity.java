@@ -10,7 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.FodderOfVendor;
 import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.http.BaseResult;
@@ -136,7 +136,8 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
         params.put("fv_id", fvId);
         params.put("quantity", quantity);
         params.put("order_type", orderType);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_POST_ORDER, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO +
+                Global.farmer.getId() + "/" + HttpAPI.FARMER_POST_ORDER, params);
         httpHandler.postOrder(requestBean, new HttpCallback<Order>() {
             @Override
             public void onSuccess(BaseResult<Order> result) {
