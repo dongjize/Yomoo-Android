@@ -16,7 +16,6 @@ import java.util.List;
  */
 
 public class VendorHomeActivity extends BaseHomeActivity {
-    private static final String TAG = VendorHomeActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private List<VendorHomeModel> modelList;
