@@ -32,6 +32,8 @@ public class HttpAPI {
 
     // 养殖户发布养殖技术需求
     public static final String POST_BREEDING_INFO_DEMAND = DOMAIN + "post_breeding_info_demand/";
+    // 养殖户获取养殖技术信息列表
+    public static final String FARMER_GET_BREEDING_INFO_LIST = "breeding_info_list/";
 
     public static final String VENDOR_GET_HISTORY_ORDER_LIST = "orders/";
 
