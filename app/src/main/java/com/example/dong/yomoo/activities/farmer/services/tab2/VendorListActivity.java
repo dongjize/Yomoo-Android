@@ -30,7 +30,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
     private static final String TAG = VendorListActivity.class.getSimpleName();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ListView mListView;
-    private VendorListAdapter2 mAdapter;
+    private VendorListAdapter mAdapter;
     private String offset = "0";
     private List<User> vendorList;
 
@@ -70,7 +70,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
                 vendorList = result.getData();
                 if (vendorList != null) {
                     if (mAdapter == null) {
-                        mAdapter = new VendorListAdapter2(context, vendorList);
+                        mAdapter = new VendorListAdapter(context, vendorList);
                         mListView.setAdapter(mAdapter);
                         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override

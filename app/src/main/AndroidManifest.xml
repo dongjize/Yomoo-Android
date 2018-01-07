@@ -64,6 +64,17 @@
             android:name=".activities.common.LoginActivity"
             android:label="登录"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.FarmerUpdateInfoActivity"
+            android:label="更新个人信息"
+            android:launchMode="singleTask" />
+
+        <!--public-->
+
+        <activity
+            android:name=".activities.common.FarmerInfoDetailActivity"
+            android:label="养殖户信息"
+            android:launchMode="singleTask" />
 
         <!-- farmer home-->
 
@@ -104,6 +115,10 @@
         <activity
             android:name=".activities.farmer.services.tab2.FarmerOrderFodderActivity"
             android:label="商品"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.farmer.services.tab1.LivestockDemandDetailActivity"
+            android:label="需求"
             android:launchMode="singleTask" />
 
         <!--vendor home-->
@@ -151,15 +166,6 @@
             android:name=".activities.supporter.SupporterHomeActivity"
             android:label="首页"
             android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.farmer.services.FodderStockDetailActivity"
-            android:label="饲料详情"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.farmer.services.tab1.LivestockDemandDetailActivity"
-            android:label="需求"
-            android:launchMode="singleTask" />
-        <activity android:name=".activities.common.FarmerInfoDetailActivity" />
 
     </application>
 
