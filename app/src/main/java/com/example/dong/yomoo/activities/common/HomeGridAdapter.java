@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities.farmer.profile;
+package com.example.dong.yomoo.activities.common;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * Created by dong on 22/12/2017.
  */
-public class FarmerProfileAdapter extends RecyclerView.Adapter<CommonItemViewHolder>  {
+public class HomeGridAdapter extends RecyclerView.Adapter<CommonItemViewHolder>  {
 
     private Context context;
     private List<CommonItemModel> modelList;
 
-    public FarmerProfileAdapter(Context context, List<CommonItemModel> modelList) {
+    public HomeGridAdapter(Context context, List<CommonItemModel> modelList) {
         this.context = context;
         this.modelList = modelList;
     }

@@ -9,10 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.Purchase;
-import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;

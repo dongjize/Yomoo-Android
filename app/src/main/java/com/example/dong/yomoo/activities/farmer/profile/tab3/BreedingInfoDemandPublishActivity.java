@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.BreedingInfoDemand;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -33,13 +33,12 @@ public class BreedingInfoDemandPublishActivity extends BaseActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breeding_info_demand_publish_activity);
 
+        initToolbar();
+
         etTitle = findViewById(R.id.et_title);
         etContent = findViewById(R.id.et_content);
         submitBtn = findViewById(R.id.btn_submit);
         submitBtn.setOnClickListener(this);
-
-        initToolbar();
-
     }
 
     @Override

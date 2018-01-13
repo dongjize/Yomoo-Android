@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.base.BaseListAdapter;
+import com.example.dong.yomoo.activities.common.BaseListAdapter;
 import com.example.dong.yomoo.entities.LivestockDemand;
 
 import java.util.List;

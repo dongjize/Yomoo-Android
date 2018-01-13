@@ -3,14 +3,13 @@ package com.example.dong.yomoo.activities.farmer.services.tab2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -31,7 +30,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
     private static final String TAG = VendorListActivity.class.getSimpleName();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ListView mListView;
-    private VendorListAdapter2 mAdapter;
+    private VendorListAdapter mAdapter;
     private String offset = "0";
     private List<User> vendorList;
 
@@ -71,7 +70,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
                 vendorList = result.getData();
                 if (vendorList != null) {
                     if (mAdapter == null) {
-                        mAdapter = new VendorListAdapter2(context, vendorList);
+                        mAdapter = new VendorListAdapter(context, vendorList);
                         mListView.setAdapter(mAdapter);
                         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override

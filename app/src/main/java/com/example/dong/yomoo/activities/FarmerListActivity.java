@@ -1,11 +1,17 @@
 package com.example.dong.yomoo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.common.BaseActivity;
+import com.example.dong.yomoo.activities.common.FarmerInfoDetailActivity;
+import com.example.dong.yomoo.activities.farmer.profile.tab2.FarmerInfoActivity;
 import com.example.dong.yomoo.entities.users.Farmer;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
@@ -65,6 +71,17 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
                 if (mAdapter == null) {
                     mAdapter = new FarmerListAdapter(context, farmerList);
                     listView.setAdapter(mAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Farmer farmer = farmerList.get(position);
+                            Intent intent = new Intent(context, FarmerInfoDetailActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("farmer_id", farmer.getId());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }

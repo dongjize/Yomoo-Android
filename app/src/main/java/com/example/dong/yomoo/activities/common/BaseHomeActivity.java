@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.activities;
+package com.example.dong.yomoo.activities.common;
 
 import android.content.DialogInterface;
 import android.content.Intent;

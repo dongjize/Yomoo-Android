@@ -359,6 +359,38 @@ public class HttpHandler extends BaseHttpHandler {
         });
     }
 
+    public void getBreedingInfoDetail(RequestBean requestBean, final HttpCallback<BreedingInfo> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        BreedingInfo breedingInfo = gson.fromJson(data.getJSONObject("info").toString(),
+                                new TypeToken<BreedingInfo>() {
+                                }.getType());
+                        BaseResult<BreedingInfo> result = new BaseResult<>();
+                        result.setData(breedingInfo);
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
     /**
      * 发布牲畜需求信息（肉品加工商）
      *
@@ -677,6 +709,38 @@ public class HttpHandler extends BaseHttpHandler {
                         BaseResult<List<LivestockDemand>> result = new BaseResult<>();
                         result.setData(demandList);
                         result.setValue(offset + "");
+                        result.setMessage(jsonObject.getString("message"));
+                        result.setResultCode(jsonObject.getInt("code"));
+                        callback.onSuccess(result);
+                    } else {
+                        callback.onFailure(jsonObject.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    callback.onFailure(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        });
+    }
+
+    public void getLivestockDemandDetail(RequestBean requestBean, final HttpCallback<LivestockDemand> callback) {
+        volleyUtils.httpGetString(requestBean, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
+                        Gson gson = new Gson();
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        LivestockDemand demand = gson.fromJson(data.getJSONObject("demand").toString(),
+                                new TypeToken<LivestockDemand>() {
+                                }.getType());
+                        BaseResult<LivestockDemand> result = new BaseResult<>();
+                        result.setData(demand);
                         result.setMessage(jsonObject.getString("message"));
                         result.setResultCode(jsonObject.getInt("code"));
                         callback.onSuccess(result);

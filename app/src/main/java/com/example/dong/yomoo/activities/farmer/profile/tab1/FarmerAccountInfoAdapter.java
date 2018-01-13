@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.common.BaseListAdapter;
 import com.example.dong.yomoo.entities.Order;
 
 import java.util.List;
@@ -16,41 +17,15 @@ import java.util.List;
  * Created by I346748 on 1/3/2018.
  */
 
-public class FarmerAccountInfoAdapter extends BaseAdapter {
-    private Context context;
-    private List<Order> orderList;
-    private LayoutInflater mInflater;
+public class FarmerAccountInfoAdapter extends BaseListAdapter<Order> {
 
-    public FarmerAccountInfoAdapter(Context context, List<Order> orderList) {
-        this.context = context;
-        this.orderList = orderList;
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public int getCount() {
-        if (orderList != null) {
-            return orderList.size();
-        }
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        if (orderList != null) {
-            return orderList.get(position);
-        }
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public FarmerAccountInfoAdapter(Context context, List<Order> list) {
+        super(context, list);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Order order = orderList.get(position);
+        Order order = mList.get(position);
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();

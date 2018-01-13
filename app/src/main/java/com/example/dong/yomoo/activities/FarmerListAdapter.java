@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.common.BaseListAdapter;
 import com.example.dong.yomoo.entities.users.Farmer;
 
 import java.util.List;
@@ -16,42 +17,15 @@ import java.util.List;
 /**
  * 养殖户列表Adapter
  */
-public class FarmerListAdapter extends BaseAdapter {
+public class FarmerListAdapter extends BaseListAdapter<Farmer> {
 
-    private Context context;
-    private List<Farmer> farmerList;
-    private LayoutInflater mInflater;
-
-    public FarmerListAdapter(Context context, List<Farmer> farmerList) {
-        this.context = context;
-        this.farmerList = farmerList;
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public int getCount() {
-        if (farmerList != null) {
-            return farmerList.size();
-        }
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        if (farmerList != null) {
-            return farmerList.get(position);
-        }
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public FarmerListAdapter(Context context, List<Farmer> list) {
+        super(context, list);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Farmer farmer = farmerList.get(position);
+        Farmer farmer = mList.get(position);
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();

@@ -3,22 +3,17 @@ package com.example.dong.yomoo.activities.farmer.services.tab3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.activities.BaseActivity;
-import com.example.dong.yomoo.activities.vendor.HistoryOrderListAdapter;
-import com.example.dong.yomoo.activities.vendor.OrderEntryDetailActivity;
+import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.entities.BreedingInfo;
-import com.example.dong.yomoo.entities.Order;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
 import com.example.dong.yomoo.http.RequestBean;
-import com.example.dong.yomoo.utils.Global;
 import com.example.dong.yomoo.utils.L;
 
 import java.util.ArrayList;
@@ -44,10 +39,14 @@ public class BreedingInfoListActivity extends BaseActivity implements SwipeRefre
         super.onCreate(savedInstanceState);
         setContentView(R.layout.breeding_info_list_activity);
 
+        initToolbar();
+
         listView = findViewById(R.id.list_view);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
         breedingInfoList = new ArrayList<>();
+
+        requestBreedingInfoList();
 
     }
 
@@ -63,14 +62,14 @@ public class BreedingInfoListActivity extends BaseActivity implements SwipeRefre
     @Override
     public void onRefresh() {
         offset = "0";
+        requestBreedingInfoList();
     }
 
     private void requestBreedingInfoList() {
         Map<String, Object> params = new HashMap<>();
-        long id = Global.user.getId();
         params.put("offset", offset);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.VENDOR_INFO + id + "/" + HttpAPI.VENDOR_GET_HISTORY_ORDER_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_GET_BREEDING_INFO_LIST, params);
         httpHandler.getBreedingInfoList(requestBean, new HttpCallback<List<BreedingInfo>>() {
             @Override
             public void onSuccess(BaseResult<List<BreedingInfo>> result) {
