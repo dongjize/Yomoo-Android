@@ -1,7 +1,6 @@
 package com.example.dong.yomoo.activities.farmer.services.tab1;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,14 +20,6 @@ public class LiveStockDemandAdapter extends BaseListAdapter<LivestockDemand> {
     public LiveStockDemandAdapter(Context context, List<LivestockDemand> list) {
         super(context, list);
     }
-
-//    public LiveStockDemandAdapter(Context context, List<LivestockDemand> livestockDemandList) {
-//        this.context = context;
-//        this.livestockDemandList = livestockDemandList;
-//        mInflater = LayoutInflater.from(context);
-//    }
-
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
