@@ -1,5 +1,6 @@
 package com.example.dong.yomoo.activities.vendor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
@@ -67,7 +68,7 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
         Map<String, Object> params = new HashMap<>();
         params.put("vendor_id", Global.user.getId() + "");
         params.put("offset", TextUtils.isEmpty(offset) ? "0" : offset);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FODDER_Of_VENDOR_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.VENDOR_PURCHASE_LIST, params);
         httpHandler.getPurchaseList(requestBean, new HttpCallback<List<Purchase>>() {
             @Override
             public void onSuccess(BaseResult<List<Purchase>> result) {
@@ -76,18 +77,18 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
                 if (mAdapter == null) {
                     mAdapter = new PurchaseListAdapter(context, purchaseList);
                     listView.setAdapter(mAdapter);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            //TODO
+//                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                            TODO
 //                            Purchase purchase = purchaseList.get(position);
 //                            Intent intent = new Intent(context, PurchaseDetailActivity.class);
 //                            Bundle bundle = new Bundle();
 //
 //                            intent.putExtras(bundle);
 //                            startActivity(intent);
-                        }
-                    });
+//                        }
+//                    });
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }

@@ -41,22 +41,23 @@ public class HttpAPI {
     public static final String FARMER_GET_HISTORY_ORDER_LIST = "orders/";
 
     // 获取经销商的饲料列表
-    public static final String FODDER_Of_VENDOR_LIST = DOMAIN + "fv_list/";
+    public static final String VENDOR_PURCHASE_LIST = VENDOR_INFO + "purchase_list/";
 
     // 养殖户查看饲料详情页
     public static final String GET_FODDER_DETAIL = DOMAIN + "fodder_of_vendor/";
 
     // 养殖户提交饲料订单
-    public static final String FARMER_POST_ORDER = "order_fodder/";
+    public static final String FARMER_POST_ORDER = FARMER_INFO + "order_fodder/";
 
     // 养殖户查看牲畜需求列表
     public static final String GET_LIVESTOCK_DEMAND_LIST = DOMAIN + "livestock_demand_list/";
     public static final String GET_LIVESTOCK_DEMAND_DETAIL = DOMAIN + "livestock_demand/";
 
     // 销售商增加进货记录
-    public static final String VENDOR_POST_PURCHASE = DOMAIN + "add_purchase/";
+    public static final String VENDOR_POST_PURCHASE = VENDOR_INFO + "add_purchase/";
 
     // 肉品加工商发布牲畜需求
     public static final String POST_LIVESTOCK_DEMAND = DOMAIN + "post_livestock_demand/";
 
 }
+

@@ -6,16 +6,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.FarmerListActivity;
-import com.example.dong.yomoo.activities.FarmerListAdapter;
 import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.activities.common.HomeGridAdapter;
-import com.example.dong.yomoo.activities.vendor.BreedingInfoPublishActivity;
-import com.example.dong.yomoo.activities.vendor.FodderStockListActivity;
-import com.example.dong.yomoo.activities.vendor.HistoryOrderListActivity;
-import com.example.dong.yomoo.activities.vendor.PurchaseInputActivity;
-import com.example.dong.yomoo.activities.vendor.PurchaseListActivity;
-import com.example.dong.yomoo.activities.vendor.VendorHomeAdapter;
-import com.example.dong.yomoo.activities.vendor.VendorHomeModel;
 import com.example.dong.yomoo.utils.CommonItemModel;
 
 import java.util.ArrayList;
