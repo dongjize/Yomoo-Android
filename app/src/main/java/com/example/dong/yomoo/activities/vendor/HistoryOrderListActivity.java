@@ -72,6 +72,7 @@ public class HistoryOrderListActivity extends BaseActivity implements SwipeRefre
         httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
             public void onSuccess(BaseResult<List<Order>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 orderList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new HistoryOrderListAdapter(context, orderList);
@@ -93,6 +94,7 @@ public class HistoryOrderListActivity extends BaseActivity implements SwipeRefre
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

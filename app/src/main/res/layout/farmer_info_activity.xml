@@ -15,207 +15,214 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="姓名" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="姓名" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
 
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
-
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="村" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_village"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="村" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_village"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="组" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_group"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="组" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="街道号" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_street_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="街道号" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_street_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="已饲养牲畜" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_livestock"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已饲养牲畜" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_livestock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="预计饲养牲畜" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_exp_livestock"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="预计饲养牲畜" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_exp_livestock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                </android.support.v7.widget.CardView>
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="个人介绍" />
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/tv_intro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="hahaha" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="个人介绍" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_intro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="hahaha" />
+                    </LinearLayout>
 
-        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-    </ScrollView>
+            </LinearLayout>
+
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

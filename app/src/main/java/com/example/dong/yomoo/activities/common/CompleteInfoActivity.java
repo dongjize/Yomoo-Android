@@ -65,7 +65,6 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
             farmerInfoLayout.setVisibility(View.GONE);
         }
 
-
     }
 
     @Override

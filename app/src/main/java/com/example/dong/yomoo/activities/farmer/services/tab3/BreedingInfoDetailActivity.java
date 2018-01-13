@@ -47,7 +47,7 @@ public class BreedingInfoDetailActivity extends BaseActivity implements SwipeRef
 
         tvTitle = findViewById(R.id.tv_title);
         tvContent = findViewById(R.id.tv_content);
-        tvPublishDate = findViewById(R.id.tv_publish_date);
+        tvPublishDate = findViewById(R.id.tv_publisher_and_date);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -71,9 +71,8 @@ public class BreedingInfoDetailActivity extends BaseActivity implements SwipeRef
 
     private void getBreedingInfoDetail() {
         Map<String, Object> params = new HashMap<>();
-        params.put("info_id", infoId);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_GET_BREEDING_INFO_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_GET_BREEDING_INFO + infoId, params);
         httpHandler.getBreedingInfoDetail(requestBean, new HttpCallback<BreedingInfo>() {
             @Override
             public void onSuccess(BaseResult<BreedingInfo> result) {

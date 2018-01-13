@@ -71,6 +71,7 @@ public class LivestockDemandListActivity extends BaseActivity implements SwipeRe
         httpHandler.getLivestockDemandList(requestBean, new HttpCallback<List<LivestockDemand>>() {
             @Override
             public void onSuccess(BaseResult<List<LivestockDemand>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 livestockDemandList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new LiveStockDemandAdapter(context, livestockDemandList);
@@ -92,6 +93,7 @@ public class LivestockDemandListActivity extends BaseActivity implements SwipeRe
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

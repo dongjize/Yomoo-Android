@@ -76,6 +76,7 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
         httpHandler.getFodderOfVendorListByVendor(requestBean, new HttpCallback<List<FodderOfVendor>>() {
             @Override
             public void onSuccess(BaseResult<List<FodderOfVendor>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 fvList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new FodderStockListAdapter(context, fvList);
@@ -98,6 +99,7 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

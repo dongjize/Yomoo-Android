@@ -71,6 +71,7 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
         httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
             public void onSuccess(BaseResult<List<Order>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 orderList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new FarmerAccountInfoAdapter(context, orderList);
@@ -82,6 +83,7 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

@@ -30,7 +30,7 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
     private static final String TAG = VendorInfoDetailActivity.class.getSimpleName();
 
 //    private RecyclerView recyclerView;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     private VendorInfoDetailAdapter mAdapter;
     private ListView listView;
     private long vendorId = -1;
@@ -57,6 +57,7 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
 
         initToolbar();
 
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
 //        recyclerView = findViewById(R.id.recycler_view);
         listView = findViewById(R.id.list_view);
         fvList = new ArrayList<>();
@@ -74,6 +75,7 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
         httpHandler.getFodderOfVendorListByVendor(requestBean, new HttpCallback<List<FodderOfVendor>>() {
             @Override
             public void onSuccess(BaseResult<List<FodderOfVendor>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 fvList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new VendorInfoDetailAdapter(context, fvList);
@@ -96,6 +98,7 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

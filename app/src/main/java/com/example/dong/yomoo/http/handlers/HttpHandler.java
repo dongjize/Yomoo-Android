@@ -368,7 +368,7 @@ public class HttpHandler extends BaseHttpHandler {
                     if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
                         Gson gson = new Gson();
                         JSONObject data = jsonObject.getJSONObject("data");
-                        BreedingInfo breedingInfo = gson.fromJson(data.getJSONObject("info").toString(),
+                        BreedingInfo breedingInfo = gson.fromJson(data.getJSONObject("breeding_info").toString(),
                                 new TypeToken<BreedingInfo>() {
                                 }.getType());
                         BaseResult<BreedingInfo> result = new BaseResult<>();

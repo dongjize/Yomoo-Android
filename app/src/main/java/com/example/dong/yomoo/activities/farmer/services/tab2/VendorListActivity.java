@@ -66,6 +66,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
 
             @Override
             public void onSuccess(BaseResult<List<User>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 offset = result.getValue();
                 vendorList = result.getData();
                 if (vendorList != null) {
@@ -91,6 +92,7 @@ public class VendorListActivity extends BaseActivity implements SwipeRefreshLayo
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

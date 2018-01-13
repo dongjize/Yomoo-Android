@@ -1,6 +1,7 @@
 package com.example.dong.yomoo.activities.farmer.profile.tab2;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
@@ -19,9 +20,10 @@ import java.util.Map;
 /**
  * 养殖户个人信息页面
  */
-public class FarmerInfoActivity extends BaseActivity {
+public class FarmerInfoActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private static final String TAG = FarmerInfoActivity.class.getSimpleName();
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView tvName, tvVillage, tvGroup, tvStreet, tvLivestock, tvExpLivestock, tvIntro;
 
     @Override
@@ -31,6 +33,7 @@ public class FarmerInfoActivity extends BaseActivity {
 
         initToolbar();
 
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         tvName = findViewById(R.id.tv_name);
         tvVillage = findViewById(R.id.tv_village);
         tvGroup = findViewById(R.id.tv_group);
@@ -59,6 +62,7 @@ public class FarmerInfoActivity extends BaseActivity {
         httpHandler.getFarmerInfo(requestBean, new HttpCallback<Farmer>() {
             @Override
             public void onSuccess(BaseResult result) {
+                swipeRefreshLayout.setRefreshing(false);
                 Farmer farmer = (Farmer) result.getData();
                 tvName.setText(farmer.getName());
                 tvVillage.setText(farmer.getVillage());
@@ -71,10 +75,16 @@ public class FarmerInfoActivity extends BaseActivity {
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }
         });
 
+    }
+
+    @Override
+    public void onRefresh() {
+        getFarmerInfo();
     }
 }

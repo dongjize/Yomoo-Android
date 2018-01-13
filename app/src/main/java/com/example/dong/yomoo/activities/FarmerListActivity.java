@@ -66,6 +66,7 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         httpHandler.getFarmerList(requestBean, new HttpCallback<List<Farmer>>() {
             @Override
             public void onSuccess(BaseResult<List<Farmer>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 farmerList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new FarmerListAdapter(context, farmerList);
@@ -88,6 +89,7 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

@@ -73,6 +73,7 @@ public class BreedingInfoListActivity extends BaseActivity implements SwipeRefre
         httpHandler.getBreedingInfoList(requestBean, new HttpCallback<List<BreedingInfo>>() {
             @Override
             public void onSuccess(BaseResult<List<BreedingInfo>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 breedingInfoList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new BreedingInfoListAdapter(context, breedingInfoList);
@@ -94,6 +95,7 @@ public class BreedingInfoListActivity extends BaseActivity implements SwipeRefre
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }

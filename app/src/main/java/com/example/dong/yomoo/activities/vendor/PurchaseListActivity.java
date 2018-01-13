@@ -71,6 +71,7 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
         httpHandler.getPurchaseList(requestBean, new HttpCallback<List<Purchase>>() {
             @Override
             public void onSuccess(BaseResult<List<Purchase>> result) {
+                swipeRefreshLayout.setRefreshing(false);
                 purchaseList = result.getData();
                 if (mAdapter == null) {
                     mAdapter = new PurchaseListAdapter(context, purchaseList);
@@ -94,6 +95,7 @@ public class PurchaseListActivity extends BaseActivity implements SwipeRefreshLa
 
             @Override
             public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
                 showToast(errMsg);
                 L.d(errMsg);
             }
