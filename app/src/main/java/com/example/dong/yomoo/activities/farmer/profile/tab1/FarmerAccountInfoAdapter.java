@@ -1,15 +1,13 @@
 package com.example.dong.yomoo.activities.farmer.profile.tab1;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.entitiy.Order;
 
 import java.util.List;
 

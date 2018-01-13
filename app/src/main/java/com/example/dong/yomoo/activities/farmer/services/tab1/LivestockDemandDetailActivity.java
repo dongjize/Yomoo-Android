@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseActivity;
-import com.example.dong.yomoo.entities.LivestockDemand;
+import com.example.dong.yomoo.entitiy.LivestockDemand;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class LivestockDemandDetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = LivestockDemandDetailActivity.class.getSimpleName();
-    private TextView tvTitle, tvContent, tvPublishDate;
+    private TextView tvTitle, tvContent, tvPublisherDate;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private long demandId;
@@ -45,10 +45,12 @@ public class LivestockDemandDetailActivity extends BaseActivity implements Swipe
         initToolbar();
 
         tvTitle = findViewById(R.id.tv_title);
+        tvPublisherDate = findViewById(R.id.tv_publisher_and_date);
         tvContent = findViewById(R.id.tv_content);
-        tvPublishDate = findViewById(R.id.tv_publish_date);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
+
+        getLivestockDetail();
     }
 
     @Override
@@ -67,15 +69,14 @@ public class LivestockDemandDetailActivity extends BaseActivity implements Swipe
 
     private void getLivestockDetail() {
         Map<String, Object> params = new HashMap<>();
-        params.put("demand_id", demandId);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_GET_BREEDING_INFO_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.GET_LIVESTOCK_DEMAND_DETAIL + demandId, params);
         httpHandler.getLivestockDemandDetail(requestBean, new HttpCallback<LivestockDemand>() {
             @Override
             public void onSuccess(BaseResult<LivestockDemand> result) {
                 livestockDemand = result.getData();
                 tvTitle.setText(livestockDemand.getTitle());
-                tvPublishDate.setText(String.format("%s %s", livestockDemand.getPublisher().getName(), livestockDemand.getCreatedAt()));
+                tvPublisherDate.setText(String.format("%s %s", livestockDemand.getPublisher().getName(), livestockDemand.getCreatedAt()));
                 tvContent.setText(livestockDemand.getContent());
             }
 

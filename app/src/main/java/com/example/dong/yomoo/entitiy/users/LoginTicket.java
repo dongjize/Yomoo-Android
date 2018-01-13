@@ -1,6 +1,6 @@
-package com.example.dong.yomoo.entities.users;
+package com.example.dong.yomoo.entitiy.users;
 
-import com.example.dong.yomoo.entities.BaseModel;
+import com.example.dong.yomoo.entitiy.BaseModel;
 
 import java.util.Date;
 

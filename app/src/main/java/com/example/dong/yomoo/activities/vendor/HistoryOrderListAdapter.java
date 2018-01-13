@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.entitiy.Order;
 
 import java.util.List;
 

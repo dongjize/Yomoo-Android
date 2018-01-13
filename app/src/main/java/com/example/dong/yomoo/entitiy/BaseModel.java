@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.entities;
+package com.example.dong.yomoo.entitiy;
 
 import com.google.gson.annotations.SerializedName;
 

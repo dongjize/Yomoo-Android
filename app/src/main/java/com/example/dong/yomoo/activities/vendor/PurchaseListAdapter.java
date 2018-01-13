@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.Purchase;
+import com.example.dong.yomoo.entitiy.Purchase;
 
 import java.util.List;
 

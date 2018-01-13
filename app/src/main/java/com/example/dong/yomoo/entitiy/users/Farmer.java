@@ -1,8 +1,6 @@
-package com.example.dong.yomoo.entities.users;
+package com.example.dong.yomoo.entitiy.users;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 
 /**
  * Created by dong on 16/12/2017.
@@ -26,6 +24,7 @@ public class Farmer extends User {
         setPhone(user.getPhone());
         setPassword(user.getPassword());
         setSalt(user.getSalt());
+        setType(user.getType());
         setName(user.getName());
         setIntro(user.getIntro());
     }
@@ -121,4 +120,5 @@ public class Farmer extends User {
     public void setExpLivestock(String expLivestock) {
         this.expLivestock = expLivestock;
     }
+
 }

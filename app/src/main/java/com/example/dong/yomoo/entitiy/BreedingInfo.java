@@ -1,22 +1,31 @@
-package com.example.dong.yomoo.entities;
+package com.example.dong.yomoo.entitiy;
 
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.users.User;
 
 /**
- * 养殖技术服务需求
+ * Created by dong on 16/12/2017.
  */
 
-public class BreedingInfoDemand extends BaseModel {
-    private long id;
+public class BreedingInfo extends BaseModel {
+    private Long id;
     private String title;
     private String content;
-    private User publisher; // 发布需求的farmer
+    private User publisher;
 
-    public long getId() {
+    public BreedingInfo() {
+    }
+
+    public BreedingInfo(String title, String content, User publisher) {
+        this.title = title;
+        this.content = content;
+        this.publisher = publisher;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

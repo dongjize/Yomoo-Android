@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.entities.Order;
+import com.example.dong.yomoo.entitiy.Order;
 import com.example.dong.yomoo.utils.BaseLoadMoreRecyclerAdapter;
 
 import java.util.List;

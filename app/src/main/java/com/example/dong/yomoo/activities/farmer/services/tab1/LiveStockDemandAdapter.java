@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.LivestockDemand;
+import com.example.dong.yomoo.entitiy.LivestockDemand;
 
 import java.util.List;
 
@@ -17,10 +17,6 @@ import java.util.List;
  */
 
 public class LiveStockDemandAdapter extends BaseListAdapter<LivestockDemand> {
-
-    private Context context;
-    private List<LivestockDemand> livestockDemandList;
-    private LayoutInflater mInflater;
 
     public LiveStockDemandAdapter(Context context, List<LivestockDemand> list) {
         super(context, list);
@@ -37,11 +33,11 @@ public class LiveStockDemandAdapter extends BaseListAdapter<LivestockDemand> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        LivestockDemand demand = livestockDemandList.get(position);
+        LivestockDemand demand = mList.get(position);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.livestock_demand_list_item, parent, false);
             holder = new ViewHolder();
-            holder.tvTitle = convertView.findViewById(R.id.tv_fodder_title);
+            holder.tvTitle = convertView.findViewById(R.id.tv_title);
             holder.tvPublisher = convertView.findViewById(R.id.tv_publisher_name);
             holder.tvCreatedAt = convertView.findViewById(R.id.tv_created_date);
             convertView.setTag(holder);

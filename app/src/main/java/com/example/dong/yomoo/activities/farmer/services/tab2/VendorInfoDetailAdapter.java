@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
-import com.example.dong.yomoo.entities.FodderOfVendor;
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.FodderOfVendor;
 
 import java.util.List;
 

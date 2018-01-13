@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.FodderOfVendor;
+import com.example.dong.yomoo.entitiy.FodderOfVendor;
 
 import java.util.List;
 

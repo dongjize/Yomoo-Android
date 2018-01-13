@@ -1,23 +1,27 @@
-package com.example.dong.yomoo.entities;
+package com.example.dong.yomoo.entitiy;
 
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class Purchase extends BaseModel {
 
-    private long id;
+    private Long id;
     @SerializedName("purchase_entries")
     private List<PurchaseEntry> purchaseEntries; // 与PurchaseEntry一对多
-    private User vendor; // 买家，即饲料销售商
+    @SerializedName("buyer")
+    private User buyer; // 买家，即饲料销售商
     private String tips;
 
-    public long getId() {
+    @SerializedName("total_price")
+    private float totalPrice;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,12 +33,12 @@ public class Purchase extends BaseModel {
         this.purchaseEntries = purchaseEntries;
     }
 
-    public User getVendor() {
-        return vendor;
+    public User getBuyer() {
+        return buyer;
     }
 
-    public void setVendor(User vendor) {
-        this.vendor = vendor;
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
     }
 
     public String getTips() {
@@ -44,6 +48,15 @@ public class Purchase extends BaseModel {
     public void setTips(String tips) {
         this.tips = tips;
     }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
 }
 
 

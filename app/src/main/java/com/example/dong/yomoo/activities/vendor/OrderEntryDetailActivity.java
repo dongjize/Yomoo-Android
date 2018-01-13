@@ -5,7 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseActivity;
-import com.example.dong.yomoo.entities.OrderEntry;
+import com.example.dong.yomoo.entitiy.OrderEntry;
 
 /**
  * 历史订单详情页面

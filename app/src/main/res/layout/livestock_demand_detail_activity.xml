@@ -32,18 +32,22 @@
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/color_black_text_common"
+                    android:textSize="18sp"
                     tools:text="title" />
 
                 <TextView
                     android:id="@+id/tv_publisher_and_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
                     tools:text="作者 and 发布时间" />
 
                 <TextView
+                    android:id="@+id/tv_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="content content content content "/>
+                    tools:text="content content content content " />
 
             </LinearLayout>
 

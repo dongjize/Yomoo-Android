@@ -50,6 +50,7 @@ public class HttpAPI {
 
     // 养殖户查看牲畜需求列表
     public static final String GET_LIVESTOCK_DEMAND_LIST = DOMAIN + "livestock_demand_list/";
+    public static final String GET_LIVESTOCK_DEMAND_DETAIL = DOMAIN + "livestock_demand/";
 
     // 销售商增加进货记录
     public static final String VENDOR_POST_PURCHASE = DOMAIN + "add_purchase/";

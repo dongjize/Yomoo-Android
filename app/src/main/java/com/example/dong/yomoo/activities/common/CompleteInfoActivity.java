@@ -12,8 +12,8 @@ import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.FarmerListActivity;
 import com.example.dong.yomoo.activities.farmer.FarmerHomeActivity;
 import com.example.dong.yomoo.activities.vendor.VendorHomeActivity;
-import com.example.dong.yomoo.entities.users.Farmer;
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.users.Farmer;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
@@ -42,6 +42,7 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
         initToolbar();
 
         etName = findViewById(R.id.et_name);
+        etIntro = findViewById(R.id.et_intro);
         submitBtn = findViewById(R.id.btn_submit);
         submitBtn.setOnClickListener(this);
         farmerInfoLayout = findViewById(R.id.farmer_info_layout);
@@ -94,13 +95,13 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
         Map<String, Object> params = new HashMap<>();
         params.put("id", Global.user.getId() + "");
         params.put("name", name);
+        params.put("intro", etIntro.getText().toString());
         if (isFarmer) {
             params.put("village", etVillage.getText().toString());
             params.put("group", etGroup.getText().toString());
             params.put("street_num", etStreet.getText().toString());
             params.put("livestock", etLivestock.getText().toString());
             params.put("exp_livestock", etExpLivestock.getText().toString());
-            params.put("intro", etGroup.getText().toString());
         }
         RequestBean requestBean = new RequestBean(TAG, HttpAPI.COMPLETE_INFO, params);
 
@@ -110,7 +111,7 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
                 showToast("资料完善成功！");
                 Global.user = (User) result.getData();
                 if (isFarmer) {
-                    Global.farmer = (Farmer) Global.user;
+                    Global.farmer = (Farmer) result.getData();
                 }
                 Intent intent = new Intent();
                 switch (Global.user.getType()) {

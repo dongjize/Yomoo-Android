@@ -1,4 +1,4 @@
-package com.example.dong.yomoo.entities;
+package com.example.dong.yomoo.entitiy;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,18 +10,25 @@ import com.google.gson.annotations.SerializedName;
  * @Time: 21:42
  */
 public class Fodder extends BaseModel {
-
-    private long id;
-    private String name;
-    private String description;
+    private Long id;
+    private String name; // 饲料名称，key
     @SerializedName("fodder_spec")
-    private String fodderSpec; // 规格
+    private String fodderSpec; // 饲料规格，key
+    private String description; //饲料描述
 
-    public long getId() {
+    public Fodder() {
+    }
+
+    public Fodder(String name, String fodderSpec) {
+        this.name = name;
+        this.fodderSpec = fodderSpec;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

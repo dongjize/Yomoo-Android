@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseListAdapter;
-import com.example.dong.yomoo.entities.BreedingInfo;
+import com.example.dong.yomoo.entitiy.BreedingInfo;
 
 import java.util.List;
 

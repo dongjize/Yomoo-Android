@@ -1,7 +1,7 @@
-package com.example.dong.yomoo.entities;
+package com.example.dong.yomoo.entitiy;
 
-import com.example.dong.yomoo.entities.users.Farmer;
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.users.Farmer;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -11,25 +11,33 @@ import java.util.List;
  */
 public class Order extends BaseModel {
 
-    private long id;
+    private Long id;
+
     @SerializedName("order_entries")
-    private List<OrderEntry> orderEntries; // 一对多
-    private Farmer buyer; // 养殖户
-    private User vendor; // 销售商
+    private List<OrderEntry> orderEntries; // 订单条目，一对多
+
+    @SerializedName("buyer")
+    private Farmer buyer; // 养殖户，多对一
+
+    @SerializedName("vendor")
+    private User vendor; // 销售商，多对一
+
     @SerializedName("order_type")
-    private String orderType;
+    private String orderType; // 订单类型，owed / payed
+
     private String tips;
+
     @SerializedName("total_price")
-    private String totalPrice;
+    private float totalPrice;
 
     public static final String OWED_ORDER = "owed";
     public static final String PAYED_ORDER = "payed";
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -73,11 +81,12 @@ public class Order extends BaseModel {
         this.tips = tips;
     }
 
-    public String getTotalPrice() {
+    public float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
     }
+
 }

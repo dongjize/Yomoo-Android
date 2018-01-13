@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.FarmerListActivity;
 import com.example.dong.yomoo.activities.farmer.FarmerHomeActivity;
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.example.dong.yomoo.utils.Global;
 import com.example.dong.yomoo.activities.vendor.VendorHomeActivity;
 

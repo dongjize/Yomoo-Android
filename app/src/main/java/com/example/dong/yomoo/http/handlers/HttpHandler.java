@@ -4,14 +4,14 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.dong.yomoo.entities.BreedingInfo;
-import com.example.dong.yomoo.entities.BreedingInfoDemand;
-import com.example.dong.yomoo.entities.FodderOfVendor;
-import com.example.dong.yomoo.entities.LivestockDemand;
-import com.example.dong.yomoo.entities.Order;
-import com.example.dong.yomoo.entities.Purchase;
-import com.example.dong.yomoo.entities.users.Farmer;
-import com.example.dong.yomoo.entities.users.User;
+import com.example.dong.yomoo.entitiy.BreedingInfo;
+import com.example.dong.yomoo.entitiy.BreedingInfoDemand;
+import com.example.dong.yomoo.entitiy.FodderOfVendor;
+import com.example.dong.yomoo.entitiy.LivestockDemand;
+import com.example.dong.yomoo.entitiy.Order;
+import com.example.dong.yomoo.entitiy.Purchase;
+import com.example.dong.yomoo.entitiy.users.Farmer;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
@@ -736,7 +736,7 @@ public class HttpHandler extends BaseHttpHandler {
                     if (jsonObject.getInt("code") == HttpAPI.RESULT_OK) {
                         Gson gson = new Gson();
                         JSONObject data = jsonObject.getJSONObject("data");
-                        LivestockDemand demand = gson.fromJson(data.getJSONObject("demand").toString(),
+                        LivestockDemand demand = gson.fromJson(data.getJSONObject("livestock_demand").toString(),
                                 new TypeToken<LivestockDemand>() {
                                 }.getType());
                         BaseResult<LivestockDemand> result = new BaseResult<>();

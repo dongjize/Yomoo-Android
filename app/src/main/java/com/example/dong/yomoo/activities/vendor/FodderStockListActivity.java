@@ -11,7 +11,7 @@ import android.widget.ListView;
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.activities.farmer.services.tab2.FarmerOrderFodderActivity;
-import com.example.dong.yomoo.entities.FodderOfVendor;
+import com.example.dong.yomoo.entitiy.FodderOfVendor;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;

@@ -1,12 +1,12 @@
-package com.example.dong.yomoo.entities.users;
+package com.example.dong.yomoo.entitiy.users;
 
-import com.example.dong.yomoo.entities.BaseModel;
+import com.example.dong.yomoo.entitiy.BaseModel;
 
 /**
  * Created by dong on 16/12/2017.
  */
 public class User extends BaseModel {
-    protected long id; // PK
+    protected Long id; // PK
 
     protected String phone;
     protected String name;
