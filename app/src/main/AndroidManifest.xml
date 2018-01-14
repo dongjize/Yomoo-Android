@@ -85,7 +85,14 @@
         <activity
             android:name=".activities.farmer.profile.tab1.FarmerAccountInfoActivity"
             android:label="账户信息"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity
             android:name=".activities.farmer.profile.tab2.FarmerInfoActivity"
             android:label="个人信息"
@@ -133,11 +140,14 @@
         <activity
             android:name=".activities.vendor.HistoryOrderListActivity"
             android:label="我的订单"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".activities.vendor.OrderEntryDetailActivity"
-            android:label="订单详情"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity
             android:name=".activities.vendor.PurchaseInputActivity"
             android:label="录入进货信息"

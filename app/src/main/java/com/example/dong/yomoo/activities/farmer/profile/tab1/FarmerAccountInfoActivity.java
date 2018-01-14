@@ -1,7 +1,13 @@
 package com.example.dong.yomoo.activities.farmer.profile.tab1;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.example.dong.yomoo.R;
@@ -31,6 +37,9 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
     private SwipeRefreshLayout swipeRefreshLayout;
     private String offset = "0";
 
+    private SearchView searchView;
+    private MenuItem searchItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +52,13 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = new SearchView(getSupportActionBar().getThemedContext());
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setIconifiedByDefault(true);
+        searchView.setMaxWidth(1000);
+
         requestFarmerAccountInfo();
 
     }
@@ -53,6 +69,37 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        searchItem = menu.add(android.R.string.search_go);
+        searchItem.setIcon(R.mipmap.ic_search_white_36dp);
+        searchItem.setActionView(searchView);
+        searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS
+                | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        showSearch(false);
+        Bundle bundle = intent.getExtras();
+//        String userQuery = String.valueOf(bundle.get(SearchManager.USER_QUERY));
+        String query = String.valueOf(bundle.get(SearchManager.QUERY));
+//        poiSearch.searchInCity((new PoiCitySearchOption()).city(GlobalData.CITY).keyword(query).pageNum(0));
+        // TODO 网络请求query
+        queryFarmerAccountInfoByKeyword(query);
+    }
+
+    private void showSearch(boolean visible) {
+        if (visible) {
+            searchItem.expandActionView();
+        } else {
+            searchItem.collapseActionView();
+            hideKeyboard(searchView.getWindowToken());
         }
     }
 
@@ -73,7 +120,8 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
             @Override
             public void onSuccess(BaseResult<List<Order>> result) {
                 swipeRefreshLayout.setRefreshing(false);
-                orderList = result.getData();
+                orderList.clear();
+                orderList.addAll(result.getData());
                 if (mAdapter == null) {
                     mAdapter = new FarmerAccountInfoAdapter(context, orderList);
                     orderListView.setAdapter(mAdapter);
@@ -90,4 +138,37 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
             }
         });
     }
+
+
+    private void queryFarmerAccountInfoByKeyword(String keyword) {
+        Map<String, Object> params = new HashMap<>();
+        long id = Global.user.getId();
+        params.put("farmer_id", id + "");
+        params.put("offset", offset);
+        params.put("key", keyword);
+
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.QUERY_FARMER_ORDER_LIST, params);
+        httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
+            @Override
+            public void onSuccess(BaseResult<List<Order>> result) {
+                swipeRefreshLayout.setRefreshing(false);
+                orderList.clear();
+                orderList.addAll(result.getData());
+                if (mAdapter == null) {
+                    mAdapter = new FarmerAccountInfoAdapter(context, orderList);
+                    orderListView.setAdapter(mAdapter);
+                } else {
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
+                showToast(errMsg);
+                L.d(errMsg);
+            }
+        });
+    }
+
 }

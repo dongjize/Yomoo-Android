@@ -92,10 +92,11 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         super.onNewIntent(intent);
         showSearch(false);
         Bundle bundle = intent.getExtras();
-        String userQuery = String.valueOf(bundle.get(SearchManager.USER_QUERY));
+//        String userQuery = String.valueOf(bundle.get(SearchManager.USER_QUERY));
         String query = String.valueOf(bundle.get(SearchManager.QUERY));
 //        poiSearch.searchInCity((new PoiCitySearchOption()).city(GlobalData.CITY).keyword(query).pageNum(0));
         // TODO 网络请求query
+        getFarmerListByKeyword(query);
 
     }
 
@@ -117,7 +118,48 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
             @Override
             public void onSuccess(BaseResult<List<Farmer>> result) {
                 swipeRefreshLayout.setRefreshing(false);
-                farmerList = result.getData();
+                farmerList.clear();
+                farmerList.addAll(result.getData());
+                if (mAdapter == null) {
+                    mAdapter = new FarmerListAdapter(context, farmerList);
+                    listView.setAdapter(mAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Farmer farmer = farmerList.get(position);
+                            Intent intent = new Intent(context, FarmerInfoDetailActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("farmer_id", farmer.getId());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(String errMsg) {
+                swipeRefreshLayout.setRefreshing(false);
+                showToast(errMsg);
+                L.d(errMsg);
+            }
+        });
+    }
+
+    private void getFarmerListByKeyword(String keyword) {
+        Map<String, Object> params = new HashMap<>();
+//        params.put("type", User.FARMER);
+        params.put("key", keyword);
+        params.put("offset", TextUtils.isEmpty(offset) ? "0" : offset);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.QUERY_FARMER_LIST, params);
+        httpHandler.getFarmerListByKeyword(requestBean, new HttpCallback<List<Farmer>>() {
+            @Override
+            public void onSuccess(BaseResult<List<Farmer>> result) {
+                swipeRefreshLayout.setRefreshing(false);
+                farmerList.clear();
+                farmerList.addAll(result.getData());
                 if (mAdapter == null) {
                     mAdapter = new FarmerListAdapter(context, farmerList);
                     listView.setAdapter(mAdapter);

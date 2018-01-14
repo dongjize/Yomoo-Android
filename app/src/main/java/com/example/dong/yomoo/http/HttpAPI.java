@@ -62,5 +62,12 @@ public class HttpAPI {
     public static final String FODDER_Of_VENDOR_LIST = DOMAIN + "fv_list/";
 
 
+
+    public static final String QUERY_FARMER_LIST = DOMAIN + "farmers_query/";
+    public static final String QUERY_VENDOR_ORDER_LIST = DOMAIN + "vendor_orders_query/";
+    public static final String QUERY_FARMER_ORDER_LIST = DOMAIN + "farmer_orders_query/";
+
+
+
 }
 
