@@ -38,8 +38,8 @@ public class FodderStockListAdapter extends BaseListAdapter<FodderOfVendor> {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tvTitle.setText(String.format("%s %s", fv.getFodder().getName(), fv.getFodder().getFodderSpec()));
-        holder.tvSellPrice.setText(String.format("%s", fv.getSellPrice()));
-        holder.tvStock.setText(fv.getStock());
+        holder.tvSellPrice.setText("单价：" + String.format("%s", fv.getSellPrice()));
+        holder.tvStock.setText(String.format("库存：%d", fv.getStock()));
         return convertView;
     }
 

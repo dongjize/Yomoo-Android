@@ -9,4 +9,5 @@
     <color name="color_black_text_common">#333333</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#CCCCCC</color>
+    <color name="light_gray">#DEDEDE</color>
 </resources>

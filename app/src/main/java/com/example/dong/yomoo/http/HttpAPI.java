@@ -59,5 +59,8 @@ public class HttpAPI {
     // 肉品加工商发布牲畜需求
     public static final String POST_LIVESTOCK_DEMAND = DOMAIN + "post_livestock_demand/";
 
+    public static final String FODDER_Of_VENDOR_LIST = DOMAIN + "fv_list/";
+
+
 }
 

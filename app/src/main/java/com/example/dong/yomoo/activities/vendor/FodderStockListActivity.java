@@ -84,12 +84,12 @@ public class FodderStockListActivity extends BaseActivity implements SwipeRefres
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            FodderOfVendor fv = fvList.get(position);
-                            Intent intent = new Intent(context, FarmerOrderFodderActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putLong("fv_id", fv.getId());
-                            intent.putExtras(bundle);
-                            startActivity(intent);
+//                            FodderOfVendor fv = fvList.get(position);
+//                            Intent intent = new Intent(context, FarmerOrderFodderActivity.class);
+//                            Bundle bundle = new Bundle();
+//                            bundle.putLong("fv_id", fv.getId());
+//                            intent.putExtras(bundle);
+//                            startActivity(intent);
                         }
                     });
                 } else {

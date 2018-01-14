@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_fodder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textColor="@color/color_black_text_common"
+        android:textSize="16sp"
+        tools:text="饲料名称+规格" />
+
+    <TextView
+        android:id="@+id/tv_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_fodder"
+        android:padding="4dp"
+        android:textColor="@color/color_black_text_common"
+        tools:text="数量：10" />
+
+    <TextView
+        android:id="@+id/tv_purchase_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="4dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        tools:text="进价xx元" />
+
+</RelativeLayout>
