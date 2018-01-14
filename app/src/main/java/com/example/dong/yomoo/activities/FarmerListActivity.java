@@ -1,9 +1,15 @@
 package com.example.dong.yomoo.activities;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,6 +42,10 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
     private FarmerListAdapter mAdapter;
     private String offset = "0";
 
+    private SearchView searchView;
+    private MenuItem searchItem;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +58,13 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         swipeRefreshLayout.setOnRefreshListener(this);
         listView = findViewById(R.id.list_view);
 
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = new SearchView(getSupportActionBar().getThemedContext());
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setIconifiedByDefault(true);
+        searchView.setMaxWidth(1000);
+
         getFarmerList();
     }
 
@@ -58,6 +75,16 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        searchItem = menu.add(android.R.string.search_go);
+        searchItem.setIcon(R.mipmap.ic_search_white_36dp);
+        searchItem.setActionView(searchView);
+        searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS
+                | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void getFarmerList() {
