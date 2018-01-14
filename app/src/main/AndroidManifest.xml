@@ -166,8 +166,23 @@
             android:name=".activities.supporter.SupporterHomeActivity"
             android:label="首页"
             android:launchMode="singleTask" />
-        <activity android:name=".activities.FarmerListActivity" />
+        <activity
+            android:name=".activities.FarmerListActivity"
+            android:label="养殖户列表"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
 
+
+        <provider
+            android:name="com.example.dong.yomoo.utils.SuggestionProvider"
+            android:authorities="com.dong.soufang.SuggestionProvider"
+            android:exported="false" />
     </application>
 
 </manifest>

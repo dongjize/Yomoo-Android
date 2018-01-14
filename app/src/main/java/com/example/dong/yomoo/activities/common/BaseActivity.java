@@ -3,9 +3,11 @@ package com.example.dong.yomoo.activities.common;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.dong.yomoo.application.MyApplication;
@@ -54,6 +56,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         progressDialog.setMessage("正在加载...");
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
+    }
+
+    /**
+     * 获取InputMethodManager，隐藏软键盘
+     *
+     * @param token
+     */
+    protected void hideKeyboard(IBinder token) {
+        if (token != null) {
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
 }

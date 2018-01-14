@@ -87,6 +87,27 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        showSearch(false);
+        Bundle bundle = intent.getExtras();
+        String userQuery = String.valueOf(bundle.get(SearchManager.USER_QUERY));
+        String query = String.valueOf(bundle.get(SearchManager.QUERY));
+//        poiSearch.searchInCity((new PoiCitySearchOption()).city(GlobalData.CITY).keyword(query).pageNum(0));
+        // TODO 网络请求query
+
+    }
+
+    private void showSearch(boolean visible) {
+        if (visible) {
+            searchItem.expandActionView();
+        } else {
+            searchItem.collapseActionView();
+            hideKeyboard(searchView.getWindowToken());
+        }
+    }
+
     private void getFarmerList() {
         Map<String, Object> params = new HashMap<>();
         params.put("type", User.FARMER);
