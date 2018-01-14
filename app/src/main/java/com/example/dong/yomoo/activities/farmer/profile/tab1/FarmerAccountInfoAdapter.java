@@ -36,10 +36,10 @@ public class FarmerAccountInfoAdapter extends BaseListAdapter<Order> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tvOrderNumber.setText(String.format("%d", order.getId()));
-        holder.tvOrderDate.setText(order.getCreatedAt());
-        holder.tvTotalPrice.setText(String.format("%s", order.getTotalPrice()));
-        holder.tvVendor.setText(order.getVendor().getName());
+        holder.tvOrderNumber.setText(String.format("订单 %d", order.getId()));
+        holder.tvOrderDate.setText(String.format("下单时间 %s", order.getCreatedAt()));
+        holder.tvTotalPrice.setText(String.format("总价 %s", order.getTotalPrice()));
+        holder.tvVendor.setText(String.format("卖家 %s", order.getVendor().getName()));
         return convertView;
     }
 

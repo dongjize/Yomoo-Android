@@ -65,9 +65,10 @@ public class FarmerAccountInfoActivity extends BaseActivity implements SwipeRefr
     private void requestFarmerAccountInfo() {
         Map<String, Object> params = new HashMap<>();
         long id = Global.user.getId();
+        params.put("farmer_id", id + "");
         params.put("offset", offset);
 
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO + id + "/" + HttpAPI.FARMER_GET_HISTORY_ORDER_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_GET_HISTORY_ORDER_LIST, params);
         httpHandler.getHistoryOrderList(requestBean, new HttpCallback<List<Order>>() {
             @Override
             public void onSuccess(BaseResult<List<Order>> result) {

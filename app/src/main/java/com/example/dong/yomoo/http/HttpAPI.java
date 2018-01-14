@@ -36,9 +36,9 @@ public class HttpAPI {
     public static final String FARMER_GET_BREEDING_INFO_LIST = DOMAIN + "breeding_info_list/";
     public static final String FARMER_GET_BREEDING_INFO = DOMAIN + "breeding_info/";
 
-    public static final String VENDOR_GET_HISTORY_ORDER_LIST = "orders/";
+    public static final String VENDOR_GET_HISTORY_ORDER_LIST = VENDOR_INFO + "orders/";
 
-    public static final String FARMER_GET_HISTORY_ORDER_LIST = "orders/";
+    public static final String FARMER_GET_HISTORY_ORDER_LIST = FARMER_INFO + "orders/";
 
     // 获取经销商的饲料列表
     public static final String VENDOR_PURCHASE_LIST = VENDOR_INFO + "purchase_list/";
