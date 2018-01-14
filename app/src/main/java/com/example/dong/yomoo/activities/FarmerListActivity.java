@@ -12,6 +12,7 @@ import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.common.BaseActivity;
 import com.example.dong.yomoo.activities.common.FarmerInfoDetailActivity;
 import com.example.dong.yomoo.entitiy.users.Farmer;
+import com.example.dong.yomoo.entitiy.users.User;
 import com.example.dong.yomoo.http.BaseResult;
 import com.example.dong.yomoo.http.HttpAPI;
 import com.example.dong.yomoo.http.HttpCallback;
@@ -61,8 +62,9 @@ public class FarmerListActivity extends BaseActivity implements SwipeRefreshLayo
 
     private void getFarmerList() {
         Map<String, Object> params = new HashMap<>();
+        params.put("type", User.FARMER);
         params.put("offset", TextUtils.isEmpty(offset) ? "0" : offset);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_LIST, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.USER_LIST, params);
         httpHandler.getFarmerList(requestBean, new HttpCallback<List<Farmer>>() {
             @Override
             public void onSuccess(BaseResult<List<Farmer>> result) {

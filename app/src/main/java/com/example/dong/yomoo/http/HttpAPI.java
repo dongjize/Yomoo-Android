@@ -17,7 +17,7 @@ public class HttpAPI {
     public static final String COMPLETE_INFO = DOMAIN + "complete_info/";
     public static final String LOGOUT = DOMAIN + "logout/";
 
-    public static final String FARMER_LIST = DOMAIN + "farmers/";
+    public static final String FARMER_LIST = DOMAIN + "farmer_list/";
 
     // 获取某个养殖户信息
     public static final String FARMER_INFO = DOMAIN + "farmer/";

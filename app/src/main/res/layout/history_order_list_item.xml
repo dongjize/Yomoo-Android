@@ -44,11 +44,11 @@
                     tools:text="specification" />
 
                 <TextView
-                    android:id="@+id/tv_fodder_buyer"
+                    android:id="@+id/tv_fodder_vendor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_created_date"
-                    tools:text="Tom" />
+                    tools:text="卖家" />
 
                 <TextView
                     android:id="@+id/tv_total_price"

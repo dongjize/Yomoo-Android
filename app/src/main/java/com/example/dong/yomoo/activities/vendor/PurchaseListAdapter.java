@@ -51,7 +51,7 @@ public class PurchaseListAdapter extends BaseListAdapter<Purchase> {
                 TextView tvPrice = layout.findViewById(R.id.tv_purchase_price);
                 tvFodder.setText(String.format("%s %s", entry.getFodder().getName(), entry.getFodder().getFodderSpec()));
                 tvQuantity.setText("数量：" + entry.getQuantity() + "");
-                tvPrice.setText(String.format("进价：%s元", entry.getPurchasePrice()));
+                tvPrice.setText("进价：" + entry.getPurchasePrice() + "元");
                 holder.entriesLayout.addView(layout);
             }
         }

@@ -53,6 +53,10 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
             finish();
             return;
         }
+        if (bundle.getSerializable("fv") == null) {
+            finish();
+            return;
+        }
         fvId = bundle.getLong("fv_id");
 
         etQuantity = findViewById(R.id.et_order_quantity);
@@ -64,16 +68,21 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
         tvFodderStock = findViewById(R.id.tv_fodder_stock);
         tvAddress = findViewById(R.id.tv_farmer_address);
 
-        tvAddress.setText(Global.farmer.getAddress());
+        tvAddress.setText(String.format("您的地址：%s", Global.farmer.getAddress()));
 
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String[] orderTypes = getResources().getStringArray(R.array.order_types);
                 Map<String, String> typeMap = new HashMap<>();
                 typeMap.put(orderTypes[0], Order.PAYED_ORDER);
                 typeMap.put(orderTypes[1], Order.OWED_ORDER);
                 orderType = typeMap.get(orderTypes[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -101,15 +110,16 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
 
     private void getFodderDetail() {
         Map<String, Object> params = new HashMap<>();
-        params.put("fv_id", fvId);
+//        params.put("fv_id", fvId);
         RequestBean requestBean = new RequestBean(TAG, HttpAPI.GET_FODDER_DETAIL + fvId, params);
         httpHandler.getFodderDetail(requestBean, new HttpCallback<FodderOfVendor>() {
             @Override
             public void onSuccess(BaseResult<FodderOfVendor> result) {
                 fv = result.getData();
+                fodderStock = fv.getStock();
                 tvFodderName.setText(fv.getFodder().getName());
-                tvFodderStock.setText(fv.getStock() + "");
-                tvSellPrice.setText(fv.getSellPrice() + "");
+                tvSellPrice.setText(String.format("价格：%s", fv.getSellPrice()));
+                tvFodderStock.setText(String.format("库存：%d 件", fv.getStock()));
                 orderBtn.setEnabled(true);
                 orderBtn.setOnClickListener(FarmerOrderFodderActivity.this);
             }
@@ -133,11 +143,11 @@ public class FarmerOrderFodderActivity extends BaseActivity implements View.OnCl
             return;
         }
         Map<String, Object> params = new HashMap<>();
-        params.put("fv_id", fvId);
-        params.put("quantity", quantity);
+        params.put("farmer_id", Global.farmer.getId() + "");
+        params.put("fv_id", fvId + "");
+        params.put("quantity", quantity + "");
         params.put("order_type", orderType);
-        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_INFO +
-                Global.farmer.getId() + "/" + HttpAPI.FARMER_POST_ORDER, params);
+        RequestBean requestBean = new RequestBean(TAG, HttpAPI.FARMER_POST_ORDER, params);
         httpHandler.postOrder(requestBean, new HttpCallback<Order>() {
             @Override
             public void onSuccess(BaseResult<Order> result) {

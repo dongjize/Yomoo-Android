@@ -29,7 +29,6 @@ import java.util.Map;
 public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = VendorInfoDetailActivity.class.getSimpleName();
 
-//    private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private VendorInfoDetailAdapter mAdapter;
     private ListView listView;
@@ -58,7 +57,7 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
         initToolbar();
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
-//        recyclerView = findViewById(R.id.recycler_view);
+        swipeRefreshLayout.setOnRefreshListener(this);
         listView = findViewById(R.id.list_view);
         fvList = new ArrayList<>();
 
@@ -86,7 +85,8 @@ public class VendorInfoDetailActivity extends BaseActivity implements SwipeRefre
                             FodderOfVendor fv = fvList.get(position);
                             Intent intent = new Intent(context, FarmerOrderFodderActivity.class);
                             Bundle bundle = new Bundle();
-                            bundle.putLong("id", fv.getId());
+                            bundle.putLong("fv_id", fv.getId());
+                            bundle.putSerializable("fv", fv);
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }

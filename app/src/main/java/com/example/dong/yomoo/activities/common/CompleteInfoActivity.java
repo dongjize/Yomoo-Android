@@ -10,7 +10,9 @@ import android.widget.LinearLayout;
 
 import com.example.dong.yomoo.R;
 import com.example.dong.yomoo.activities.FarmerListActivity;
+import com.example.dong.yomoo.activities.butcher.ButcherHomeActivity;
 import com.example.dong.yomoo.activities.farmer.FarmerHomeActivity;
+import com.example.dong.yomoo.activities.supporter.SupporterHomeActivity;
 import com.example.dong.yomoo.activities.vendor.VendorHomeActivity;
 import com.example.dong.yomoo.entitiy.users.Farmer;
 import com.example.dong.yomoo.entitiy.users.User;
@@ -121,10 +123,10 @@ public class CompleteInfoActivity extends BaseActivity implements View.OnClickLi
                         intent.setClass(context, VendorHomeActivity.class);
                         break;
                     case User.BUTCHER:
-                        intent.setClass(context, FarmerListActivity.class);
+                        intent.setClass(context, ButcherHomeActivity.class);
                         break;
                     case User.SUPPORTER:
-                        intent.setClass(context, FarmerListActivity.class);
+                        intent.setClass(context, SupporterHomeActivity.class);
                         break;
                 }
                 startActivity(intent);

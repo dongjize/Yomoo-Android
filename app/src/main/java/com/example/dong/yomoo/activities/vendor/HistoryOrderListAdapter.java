@@ -31,7 +31,7 @@ public class HistoryOrderListAdapter extends BaseListAdapter<Order> {
             holder.tvOrderNumber = convertView.findViewById(R.id.tv_order_number);
             holder.tvOrderDate = convertView.findViewById(R.id.tv_created_date);
             holder.tvTotalPrice = convertView.findViewById(R.id.tv_total_price);
-            holder.tvBuyer = convertView.findViewById(R.id.tv_fodder_buyer);
+            holder.tvBuyer = convertView.findViewById(R.id.tv_fodder_vendor);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

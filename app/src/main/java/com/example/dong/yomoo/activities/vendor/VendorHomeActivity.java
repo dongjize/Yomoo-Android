@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.FarmerListActivity;
 import com.example.dong.yomoo.activities.common.BaseHomeActivity;
 
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ public class VendorHomeActivity extends BaseHomeActivity {
                 new VendorHomeModel("我的库存", "", FodderStockListActivity.class),
                 new VendorHomeModel("历史进货", "", PurchaseListActivity.class),
                 new VendorHomeModel("添加进货信息", "", PurchaseInputActivity.class),
-                new VendorHomeModel("发布养殖技术", "", BreedingInfoPublishActivity.class)
+                new VendorHomeModel("发布养殖技术", "", BreedingInfoPublishActivity.class),
+                new VendorHomeModel("养殖户列表", "", FarmerListActivity.class)
         };
         modelList.addAll(Arrays.asList(models));
 

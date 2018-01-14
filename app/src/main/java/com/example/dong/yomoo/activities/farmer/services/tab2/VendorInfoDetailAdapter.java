@@ -1,6 +1,7 @@
 package com.example.dong.yomoo.activities.farmer.services.tab2;
 
 import android.content.Context;
+import android.support.design.internal.BaselineLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dong.yomoo.R;
+import com.example.dong.yomoo.activities.common.BaseListAdapter;
 import com.example.dong.yomoo.entitiy.FodderOfVendor;
 
 import java.util.List;
@@ -17,43 +19,16 @@ import java.util.List;
  * Created by dong on 30/12/2017.
  */
 
-public class VendorInfoDetailAdapter extends BaseAdapter {
+public class VendorInfoDetailAdapter extends BaseListAdapter<FodderOfVendor> {
 
-    private Context context;
-    private List<FodderOfVendor> fvList;
-    private LayoutInflater mInflater;
-
-    public VendorInfoDetailAdapter(Context context, List<FodderOfVendor> fvList) {
-        this.context = context;
-        this.fvList = fvList;
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public int getCount() {
-        if (fvList == null) {
-            return 0;
-        }
-        return fvList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        if (fvList == null) {
-            return null;
-        }
-        return fvList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public VendorInfoDetailAdapter(Context context, List<FodderOfVendor> list) {
+        super(context, list);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        FodderOfVendor fv = fvList.get(position);
+        FodderOfVendor fv = mList.get(position);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.vendor_info_detail_item, parent, false);
             holder = new ViewHolder();
@@ -66,8 +41,8 @@ public class VendorInfoDetailAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tvTitle.setText(String.format("%s %s", fv.getFodder().getName(), fv.getFodder().getFodderSpec()));
-        holder.tvSellPrice.setText(String.format("%s", fv.getSellPrice()));
-        holder.tvStock.setText(fv.getStock());
+        holder.tvSellPrice.setText(String.format("售价 %s", fv.getSellPrice()));
+        holder.tvStock.setText(String.format("库存 %d", fv.getStock()));
         return convertView;
     }
 

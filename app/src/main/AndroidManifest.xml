@@ -166,6 +166,7 @@
             android:name=".activities.supporter.SupporterHomeActivity"
             android:label="首页"
             android:launchMode="singleTask" />
+        <activity android:name=".activities.FarmerListActivity" />
 
     </application>
 

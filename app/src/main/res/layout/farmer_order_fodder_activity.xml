@@ -67,14 +67,19 @@
                     android:textSize="14sp"
                     tools:text="库存" />
 
-                <EditText
-                    android:id="@+id/et_order_quantity"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:hint="购买数量：（件）"
-                    android:inputType="number"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_order_quantity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:hint="购买数量：（件）"
+                        android:inputType="number"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_farmer_address"
